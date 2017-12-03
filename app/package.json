@@ -1,0 +1,36 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "Scheduling app for barbers and their clients",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sosa413131/Barber-Shop.git"
+  },
+  "keywords": [
+    "scheduling",
+    "barber",
+    "haircut",
+    "trim",
+    "appointment",
+    "clock",
+    "time",
+    "ontime"
+  ],
+  "author": "David W Sosa, Aaron Kriegler, Hector Candelaria",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sosa413131/Barber-Shop/issues"
+  },
+  "homepage": "https://github.com/sosa413131/Barber-Shop#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "method-override": "^2.3.10",
+    "mysql": "^2.15.0"
+  }
+}
