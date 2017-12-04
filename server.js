@@ -25,13 +25,14 @@ app.set("view engine", "handlebars");
 // Import routes
 var routes = require("./controllers/BarberShop_controller.js");
 
- // give the server access to them.
-app.use("/", routes);
-
 // log all requests to server
 app.use(morgan('tiny'));
+
+ // give the server access to them.
+app.use("/", routes);
 
 // listens for requests
 app.listen(port, function() {
 	console.log("Listening on PORT " + port);
 });
+

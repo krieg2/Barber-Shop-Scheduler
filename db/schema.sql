@@ -27,3 +27,15 @@ city VARCHAR(255),
 state VARCHAR(2),
 primary key (id)
 );
+
+
+-- CREATE TABLE appointments(
+
+-- id int(11) AUTO_INCREMENT NOT NULL,
+-- barberID VARCHAR(255) NOT NULL,
+-- clientID VARCHAR(255) NOT NULL,
+-- appointmenttime datetime  NOT NULL,,
+-- timeseen,
+-- dayofweek  NOT NULL,
+-- customerrating
+-- );
