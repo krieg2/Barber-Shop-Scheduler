@@ -1,3 +1,9 @@
-h1{
-    color:red;
+.close{
+	margin-right: 10px;
+	margin-top: 5px;
+	cursor: pointer;
+}
+
+.signInModal-content{
+    background-color: #F5F5F5;
 }
