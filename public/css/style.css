@@ -1,3 +1,55 @@
-h1{
-    color:red;
+.close{
+	margin-right: 10px;
+	margin-top: 5px;
+	cursor: pointer;
+}
+
+.signInModal-content{
+    background-color: #F5F5F5;
+}
+
+.modal-body {
+	padding: 2px;
+	background-color: #fff;
+	clear: left;
+}
+
+.login-area {
+    padding: 2em;
+}
+
+.email, .password{
+    outline: none;
+    font-size: 1em;
+    color: #000;
+    padding: 1em .5em;
+    margin: 0;
+    width: 95%;
+    border: none;
+    border: 1px solid #999;
+    -webkit-appearance: none;
+    margin-bottom: 1em;
+    border-left: 4px solid #DC143C;
+}
+
+.login-area input[type="submit"] {
+    color: #fff;
+    padding:.8em 0;
+	width: 100%;
+    cursor: pointer;
+    border: none;
+    background-color: #DC143C;
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+.login-area input[type="submit"]:hover {
+    background-color: #ffb900;
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
 }
