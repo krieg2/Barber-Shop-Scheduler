@@ -8,11 +8,9 @@ var port = process.env.PORT || 3000  ;
 
 var app = express();
 
+app.use('/dashboard/', express.static(path.join(__dirname, 'public')));
+app.use('/client/', express.static(path.join(__dirname, 'public')));
 app.use('/', express.static(path.join(__dirname, 'public')));
-app.use('/dashboard', express.static(path.join(__dirname, 'public')));
-app.use('/client', express.static(path.join(__dirname, 'public')));
-
-
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.urlencoded({
@@ -40,4 +38,3 @@ app.use("/", routes);
 app.listen(port, function() {
 	console.log("Listening on PORT " + port);
 });
-
