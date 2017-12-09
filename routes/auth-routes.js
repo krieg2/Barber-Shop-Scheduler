@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-module.exports = function(passport) {
+module.exports.setRoutes = function(passport){
 
     router.get("/google", passport.authenticate("google", {scope: ["profile"]}));
     router.get("/google/callback",
@@ -14,7 +14,8 @@ module.exports = function(passport) {
     router.get("/github/callback",
         passport.authenticate("github", {failureRedirect: "/error"}),
         function(req, res){
-            res.send("Login success");
+            console.log("Login success");
+            res.redirect("/client/987654");
         }
     );
     router.get("/error", function(req, res){
@@ -24,6 +25,6 @@ module.exports = function(passport) {
       req.logout();
       res.redirect("/");
     });
+};
 
-    return router;
-}
+module.exports.router = router;

@@ -45,10 +45,10 @@ passport.use(new GithubStrategy({
         profile: profile
     });
 }));
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function(user, done){
     done(null, user);
 });
-passport.deserializeUser(function(user, done) {
+passport.deserializeUser(function(user, done){
     done(null, user);
 });
 
@@ -61,8 +61,9 @@ app.set("view engine", "handlebars");
 // Import routes
 var routes = require("./controllers/BarberShop_controller.js");
 var authRoutes = require("./routes/auth-routes.js");
+authRoutes.setRoutes(passport);
 app.use("/", routes);
-app.use("/auth", authRoutes(passport));
+app.use("/auth", authRoutes.router);
 
 // log all requests to server
 app.use(morgan("tiny"));
