@@ -6,6 +6,7 @@ hbsObject = {
   dummy: "data"
 }
 
+
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function (req, res) {
 
@@ -14,7 +15,6 @@ router.get("/", function (req, res) {
 
 router.get("/dashboard/:barberID", function (req, res) {
   // request to API using barberID
-
   res.render("dashboardview", hbsObject);
   
 });

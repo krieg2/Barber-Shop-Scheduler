@@ -1,13 +1,18 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
-var morgan = require('morgan');
+const morgan = require('morgan');
+const path = require("path");
 
 var port = process.env.PORT || 3000  ;
 
 var app = express();
 
-app.use(express.static("public"));
+app.use('/', express.static(path.join(__dirname, 'public')));
+app.use('/dashboard', express.static(path.join(__dirname, 'public')));
+app.use('/client', express.static(path.join(__dirname, 'public')));
+
+
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.urlencoded({
