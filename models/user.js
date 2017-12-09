@@ -31,10 +31,7 @@ module.exports = (sequelize,DataTypes) => {
     },
     phone: {
       type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        isNumeric: true,          // will only allow numbers
-      }
+      allowNull: true
     },
     rating: {
       type: DataTypes.INTEGER,

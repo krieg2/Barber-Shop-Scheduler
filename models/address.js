@@ -18,15 +18,24 @@ module.exports = (sequelize,DataTypes) => {
       type: DataTypes.STRING,
       defaultValue: null,
       validate:{
-        len: [2,2]              // only allow values with length between 2 and 10
+        len: [2,2]                // only allow values with length between 2 and 10
       }
     },
-    rating: {
-      type: DataTypes.INTEGER
+    zip_code: {
+      type: DataTypes.INTEGER,
+      validate:{
+        isNumeric: true,          // will only allow numbers
+        len: [5,5]                // only allow values with length between 2 and 10
+      }
     },
-    survey: {
-      type: DataTypes.TEXT,
-      defaultValue: null
+    country: {
+      type: DataTypes.STRING,
+      defaultValue: 'USA',
+      validate:{
+        notNull: true,            // won't allow null
+        notEmpty: true            // don't allow empty strings
+
+      }
     }
   });
 
