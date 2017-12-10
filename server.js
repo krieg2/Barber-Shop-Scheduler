@@ -8,8 +8,6 @@ const GithubStrategy = require("passport-github").Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const methodOverride = require("method-override");
 const path = require("path");
-const GithubStrategy = require("passport-github").Strategy;
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 var port = process.env.PORT || 3000  ;
 
