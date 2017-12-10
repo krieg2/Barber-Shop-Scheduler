@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const passport = require("passport");
+const session = require("cookie-session");
 const keys = require("./config/keys.js");
 const GithubStrategy = require("passport-github").Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
@@ -24,6 +25,10 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 // Configure Passport...
+app.use(session({
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: [keys.session.cookieSecret]
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new GoogleStrategy({
@@ -51,9 +56,11 @@ passport.use(new GithubStrategy({
     });
 }));
 passport.serializeUser(function(user, done){
-    done(null, user);
+	//console.log("\n serializeUser: "+JSON.stringify(user));
+    done(null, user.profile.id);
 });
 passport.deserializeUser(function(user, done){
+	//console.log("\n deserializeUser: "+JSON.stringify(user));
     done(null, user);
 });
 

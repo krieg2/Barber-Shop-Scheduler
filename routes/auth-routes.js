@@ -7,7 +7,8 @@ module.exports.setRoutes = function(passport){
     router.get("/google/callback",
         passport.authenticate("google", {failureRedirect: "/error"}),
         function(req, res){
-            res.send("Login success");
+            console.log("Login success");
+            res.redirect("/client/987654");
         }
     );
     router.get("/github", passport.authenticate("github"));
