@@ -28,6 +28,7 @@
   "homepage": "https://github.com/sosa413131/Barber-Shop#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "cookie-session": "^2.0.0-beta.3",
     "datatables.net-bs4": "^1.10.16",
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",
