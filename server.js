@@ -2,10 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const passport = require("passport");
-const cookieParser = require('cookie-parser');
 const session = require("express-session");
 const FileStore = require('session-file-store')(session);
-//const session = require("cookie-session");
 const keys = require("./config/keys.js");
 const GithubStrategy = require("passport-github").Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
@@ -15,10 +13,9 @@ const path = require("path");
 const port = process.env.PORT || 3000  ;
 const app = express();
 
-app.use(express.static("public"));
-//app.use('/dashboard/', express.static(path.join(__dirname, 'public')));
-//app.use('/client/', express.static(path.join(__dirname, 'public')));
-//app.use('/', express.static(path.join(__dirname, 'public')));
+app.use('/dashboard/', express.static(path.join(__dirname, 'public')));
+app.use('/client/', express.static(path.join(__dirname, 'public')));
+app.use('/', express.static(path.join(__dirname, 'public')));
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.urlencoded({
@@ -27,17 +24,20 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 // Configure Passport...
-//app.use(session({
-//    maxAge: 1,
-//    keys: [keys.session.cookieSecret]
-//}));
-app.use(cookieParser());
+
 app.use(session({
   name: "server-session-cookie-id",
   secret: keys.session.cookieSecret,
   saveUninitialized: true,
   resave: true,
-  store: new FileStore()
+  store: new FileStore(),
+  unset: "destroy",
+  cookie: {
+    maxAge: null,
+    httpOnly: false,
+    path: "/",
+    secure: false
+  }
 }));
 app.use(passport.initialize());
 app.use(passport.session());

@@ -7,12 +7,12 @@ var hbsObject = {
 // Function to ensure that the user has been authenticated
 // before viewing pages.
 const isLoggedIn = function(req, res, next){
-console.log("isLoggedIn:"+req.isAuthenticated());
-console.log("user:"+req.user);
+  console.log("isLoggedIn:"+req.isAuthenticated());
+  console.log("user:"+req.user);
     if(req.isAuthenticated()){
-    	next();
+        next();
     } else{
-    	res.redirect("/");
+        res.redirect("/");
     }
 }
 
