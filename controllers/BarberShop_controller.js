@@ -20,8 +20,6 @@ console.log("user:"+req.user);
 // Main page where users can sign in. No authentication required here.
 router.get("/", function (req, res) {
 
-    console.log("main page auth:"+req.isAuthenticated());
-    console.log("main page user:"+req.user);
     res.render("index", {isLoggedIn: req.isAuthenticated()});
 
 });
