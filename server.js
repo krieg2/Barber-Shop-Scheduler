@@ -1,18 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-<<<<<<< HEAD
-=======
 const morgan = require("morgan");
 const passport = require("passport");
 const session = require("cookie-session");
 const keys = require("./config/keys.js");
 const GithubStrategy = require("passport-github").Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
->>>>>>> 43d6c59dd2228754295da296d4a54969486944c1
 const methodOverride = require("method-override");
-const morgan = require('morgan');
 const path = require("path");
-const keys = require("./config/keys.js");
 const GithubStrategy = require("passport-github").Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
@@ -29,9 +24,6 @@ app.use(bodyParser.urlencoded({
 	extended: false
 }));
 
-<<<<<<< HEAD
-app.use(bodyParser.json());
-=======
 // Configure Passport...
 app.use(session({
     maxAge: 24 * 60 * 60 * 1000,
@@ -71,7 +63,6 @@ passport.deserializeUser(function(user, done){
 	//console.log("\n deserializeUser: "+JSON.stringify(user));
     done(null, user);
 });
->>>>>>> 43d6c59dd2228754295da296d4a54969486944c1
 
 // Set Handlebars.
 var exphbs = require("express-handlebars");
