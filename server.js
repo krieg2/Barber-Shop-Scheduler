@@ -29,7 +29,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes
-var routes = require("./controllers/BarberShop_controller.js");
+var routes = require("./routes/html-routes.js");
 
 // log all requests to server
 app.use(morgan('tiny'));
