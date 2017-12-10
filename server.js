@@ -1,5 +1,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+<<<<<<< HEAD
+=======
+const morgan = require("morgan");
+const passport = require("passport");
+const session = require("cookie-session");
+const keys = require("./config/keys.js");
+const GithubStrategy = require("passport-github").Strategy;
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+>>>>>>> 43d6c59dd2228754295da296d4a54969486944c1
 const methodOverride = require("method-override");
 const morgan = require('morgan');
 const path = require("path");
@@ -20,7 +29,49 @@ app.use(bodyParser.urlencoded({
 	extended: false
 }));
 
+<<<<<<< HEAD
 app.use(bodyParser.json());
+=======
+// Configure Passport...
+app.use(session({
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: [keys.session.cookieSecret]
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new GoogleStrategy({
+    clientID: keys.google.clientID,
+    clientSecret: keys.google.clientSecret,
+    callbackURL: "http://localhost:3000/auth/google/callback"
+}, function(accessToken, refreshToken, profile, done){
+    // Look up user in database here?
+    console.log(profile);
+    done(null, {
+        accessToken: accessToken,
+        profile: profile
+    });
+}));
+passport.use(new GithubStrategy({
+    clientID: keys.github.clientID,
+    clientSecret: keys.github.clientSecret,
+    callbackURL: "http://localhost:3000/auth/github/callback"
+}, function(accessToken, refreshToken, profile, done){
+    // Look up user in database here?
+    console.log(profile);
+    done(null, {
+        accessToken: accessToken,
+        profile: profile
+    });
+}));
+passport.serializeUser(function(user, done){
+	//console.log("\n serializeUser: "+JSON.stringify(user));
+    done(null, user.profile.id);
+});
+passport.deserializeUser(function(user, done){
+	//console.log("\n deserializeUser: "+JSON.stringify(user));
+    done(null, user);
+});
+>>>>>>> 43d6c59dd2228754295da296d4a54969486944c1
 
 // Set Handlebars.
 var exphbs = require("express-handlebars");
