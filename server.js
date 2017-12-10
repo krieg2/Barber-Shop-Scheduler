@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const morgan = require('morgan');
 const path = require("path");
-const morgan = require('morgan');
 const keys = require("./config/keys.js");
 const GithubStrategy = require("passport-github").Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
