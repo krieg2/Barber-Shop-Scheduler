@@ -6,14 +6,28 @@ module.exports.setRoutes = function(passport){
     router.get("/google", passport.authenticate("google", {scope: ["profile"]}));
     router.get("/google/callback",
       passport.authenticate("google",
-        {successRedirect: "/client/987654", failureRedirect: "/error"})
-    );
+        {failureRedirect: "/error"}),
+        function(req, res){
+          req.login(req.user, function(err){
+            if(err) { return next(err); }
+            req.session.save(function(){
+                res.redirect("/client/987654");
+            });
+          });
+    });
 
     router.get("/github", passport.authenticate("github"));
     router.get("/github/callback",
       passport.authenticate("github",
-        {successRedirect: "/client/987654", failureRedirect: "/error"})
-    );
+        {failureRedirect: "/error"}),
+        function(req, res){
+          req.login(req.user, function(err){
+            if(err) { return next(err); }
+            req.session.save(function(){
+                res.redirect("/client/987654");
+            });
+          });
+    });
 
     router.get("/error", function(req, res){
         res.send("Login Failed");
