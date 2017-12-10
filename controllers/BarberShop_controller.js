@@ -1,7 +1,5 @@
 const express = require("express");
-
 const router = express.Router();
-
 hbsObject = {
   dummy: "data"
 }
@@ -16,14 +14,14 @@ router.get("/", function (req, res) {
 router.get("/dashboard/:barberID", function (req, res) {
   // request to API using barberID
   res.render("dashboardview", hbsObject);
-  
+
 });
 
 router.get("/client/:clientID", function (req, res) {
-
-    // request to API using clientID
+  // request to API using clientID
 
   res.render("clientview", hbsObject);
 });
+
 
 module.exports = router;
