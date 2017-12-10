@@ -6,6 +6,7 @@ const session = require("express-session");
 const FileStore = require('session-file-store')(session);
 const keys = require("./config/keys.js");
 const GithubStrategy = require("passport-github").Strategy;
+const FacebookStrategy = require("passport-facebook").Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const methodOverride = require("method-override");
 const path = require("path");
@@ -54,6 +55,15 @@ passport.use(new GithubStrategy({
     clientID: keys.github.clientID,
     clientSecret: keys.github.clientSecret,
     callbackURL: "http://localhost:3000/auth/github/callback"
+}, (accessToken, refreshToken, profile, done) => {
+    // Look up user in database here?
+    //console.log(profile);
+    done(null, profile);
+}));
+passport.use(new FacebookStrategy({
+    clientID: keys.facebook.clientID,
+    clientSecret: keys.facebook.clientSecret,
+    callbackURL: "http://localhost:3000/auth/facebook/callback"
 }, (accessToken, refreshToken, profile, done) => {
     // Look up user in database here?
     //console.log(profile);

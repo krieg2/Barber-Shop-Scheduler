@@ -29,6 +29,19 @@ module.exports.setRoutes = function(passport){
           });
     });
 
+    router.get("/facebook", passport.authenticate("facebook"));
+    router.get("/facebook/callback",
+      passport.authenticate("facebook",
+        {failureRedirect: "/error"}),
+        function(req, res){
+          req.login(req.user, function(err){
+            if(err) { return next(err); }
+            req.session.save(function(){
+                res.redirect("/client/987654");
+            });
+          });
+    });
+
     router.get("/error", function(req, res){
         res.send("Login Failed");
     });
