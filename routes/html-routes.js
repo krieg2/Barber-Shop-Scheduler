@@ -25,17 +25,12 @@ const isLoggedIn = function(req, res, next){
 // Main page where users can sign in. No authentication required here.
 router.get("/", function (req, res) {
 
-<<<<<<< HEAD:routes/html-routes.js
   var background_images = ["../img/barber1.jpg","../img/barber2.jpg","../img/barber3.jpg","../img/barber4.jpg","../img/barber5.jpg"]
 
   var randomPhotoIndex = Math.floor(Math.random() * background_images.length); 
   
   hbsObject.background_image = background_images[randomPhotoIndex]
   res.render("index", hbsObject);
-=======
-    res.render("index", {isLoggedIn: req.isAuthenticated()});
-
->>>>>>> 88bba47f7c128011fabadfd737bfb1a2cc17fe5d:controllers/BarberShop_controller.js
 });
 
 // Request to API using barberID. User must be authenticated.
