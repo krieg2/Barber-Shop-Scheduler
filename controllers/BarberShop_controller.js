@@ -1,5 +1,10 @@
 const express = require("express");
 const router = express.Router();
+const keys = require("../config/keys.js");
+const keyPublishable = keys.stripe.publicKey;
+const keySecret = keys.stripe.secretKey;
+const stripe = require("stripe")(keySecret);
+
 var hbsObject = {
   dummy: "data"
 }
@@ -34,8 +39,26 @@ router.get("/dashboard/:barberID", isLoggedIn, function (req, res) {
 // Request to API using clientID. User must be authenticated.
 router.get("/client/:clientID", isLoggedIn, function (req, res) {
 
-    res.render("clientview", hbsObject);
+    res.render("clientview", {keyPublishable: keyPublishable});
 
+});
+
+// Stripe payments route.
+router.post("/charge", function (req, res) {
+  let amount = 500;
+
+  stripe.customers.create({
+     email: req.body.stripeEmail,
+    source: req.body.stripeToken
+  })
+  .then(customer =>
+    stripe.charges.create({
+      amount,
+      description: "Sample Charge",
+         currency: "usd",
+         customer: customer.id
+    }))
+  .then(charge => res.render("charge"));
 });
 
 module.exports = router;

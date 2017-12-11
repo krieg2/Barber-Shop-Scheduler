@@ -51,6 +51,21 @@
         <small>Secondary Text</small>
       </h1>
 
+      <!-- Testing Stripe! -->
+      <form action="/charge" method="POST">
+      <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key={{keyPublishable}}
+        data-amount="500"
+        data-name="Demo"
+        data-description="Donate to the Developers Fund"
+        data-zip-code="true"
+        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+        data-locale="auto">
+      </script>
+      </form>
+      <br><br>
+
       <!-- Project One -->
       <div class="row">
         <div class="col-md-7">
