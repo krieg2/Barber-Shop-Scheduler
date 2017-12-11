@@ -20,13 +20,14 @@ module.exports = (sequelize,DataTypes) => {
     },
     photo: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: true,
+      defaultValue: null
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isEmail: true,            // checks for email format (foo@bar.com)
+        isEmail: true             // checks for email format (foo@bar.com)
       }
     },
     phone: {
@@ -35,7 +36,7 @@ module.exports = (sequelize,DataTypes) => {
     },
     rating: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      defaultValue: 5
     },
     user_type: {
       type: DataTypes.STRING,

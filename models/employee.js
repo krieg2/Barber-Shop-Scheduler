@@ -10,15 +10,9 @@ module.exports = (sequelize,DataTypes) => {
     },
     photo: {
       type: DataTypes.STRING,
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
+      allowNull: true,
       defaultValue: null
     },
-    business_id: {
-      type: DataTypes.INTEGER,
-      defaultValue: null
-    }
   });
 
   //Associate with
@@ -29,6 +23,11 @@ module.exports = (sequelize,DataTypes) => {
     });
     Employee.hasMany(models.Appoiment, {
       onDelete: 'cascade'
+    });
+    Employee.belongsTo(models.User, {
+      user_id:{
+        allowNull: false
+      }
     });
   };
   return Employee;

@@ -10,11 +10,15 @@ module.exports = (sequelize,DataTypes) => {
     },
     from: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: false
     },
     to: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: false
+    },
+    date: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
     wait_time: {
       type: DataTypes.INTEGER,
@@ -28,11 +32,7 @@ module.exports = (sequelize,DataTypes) => {
       type: DataTypes.TEXT,
       defaultValue: null
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    service_id: {
+    ServiceId: {
       type: DataTypes.INTEGER,
       allowNull: false
     }
@@ -43,6 +43,11 @@ module.exports = (sequelize,DataTypes) => {
 
     Appoiment.belongsTo(models.Employee,{
       employee_id: {
+        allowNull: false
+      }
+    });
+    Appoiment.belongsTo(models.User,{
+      user_id: {
         allowNull: false
       }
     });

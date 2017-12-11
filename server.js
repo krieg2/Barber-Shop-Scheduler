@@ -26,6 +26,13 @@ app.set("view engine", "handlebars");
 
 // Routes
 // =============================================================
+require("./routes/address-api-routes.js")(app);
+require("./routes/appoiment-api-routes.js")(app);
+require("./routes/business-api-routes.js")(app);
+require("./routes/employee-api-routes.js")(app);
+require("./routes/product-api-routes.js")(app);
+require("./routes/scheduled-api-routes.js")(app);
+require("./routes/service-api-routes.js")(app);
 require("./routes/user-api-routes.js")(app);
 
 // log all requests to server
@@ -35,7 +42,7 @@ app.use(morgan('tiny'));
 //app.use("/", routes);
 
 
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({}).then(function() {
 	// listens for requests
 	app.listen(port, function() {
 		console.log("Listening on PORT " + port);
