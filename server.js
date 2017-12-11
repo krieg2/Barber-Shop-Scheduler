@@ -25,7 +25,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 // Configure Passport...
-
 app.use(session({
   name: "server-session-cookie-id",
   secret: keys.session.cookieSecret,
@@ -86,6 +85,10 @@ app.set("view engine", "handlebars");
 
 // Import routes
 var routes = require("./routes/html-routes.js");
+var authRoutes = require("./routes/auth-routes.js");
+authRoutes.setRoutes(passport);
+app.use("/", routes);
+app.use("/auth", authRoutes.router);
 
 // log all requests to server
 app.use(morgan('tiny'));
