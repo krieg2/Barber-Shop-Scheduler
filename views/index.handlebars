@@ -35,7 +35,7 @@
     <header class="masthead">
       <div class="container">
         <div class="intro-text">
-          <div class="intro-lead-in">Welcome To the Barber Scheduler!</div>
+          <div class="intro-lead-in">Welcome To The Barber Scheduler!</div>
           <div class="intro-heading text-uppercase">It's Nice To Meet You</div>
           {{#unless isLoggedIn}}
             <a class="btn btn-danger btn-xl text-uppercase" data-toggle="modal" href="#signInModal">Customer Sign In</a>
@@ -723,6 +723,13 @@
     <!-- developer application scripts for this page -->
 
     <script src="js/javascript.js"></script>
+<style>
+  header.masthead {
+    background-image : url({{background_image}})
+  }
+
+</style>
+
   </body>
 
     
