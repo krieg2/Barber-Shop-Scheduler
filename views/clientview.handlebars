@@ -25,7 +25,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home
+              <a class="nav-link" href="/">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -50,6 +50,21 @@
       <h1 class="my-4">Page Heading
         <small>Secondary Text</small>
       </h1>
+
+      <!-- Testing Stripe! -->
+      <form action="/charge" method="POST">
+      <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key={{keyPublishable}}
+        data-amount="500"
+        data-name="Demo"
+        data-description="Donate to the Developers Fund"
+        data-zip-code="true"
+        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+        data-locale="auto">
+      </script>
+      </form>
+      <br><br>
 
       <!-- Project One -->
       <div class="row">
