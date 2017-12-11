@@ -6,6 +6,10 @@
 .AppleDouble
 .LSOverride
 
+## Secret Keys ##
+keys.js
+sessions
+
 # Icon must end with two \r
 Icon
 
