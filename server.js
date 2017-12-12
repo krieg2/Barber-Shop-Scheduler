@@ -12,7 +12,7 @@ const methodOverride = require("method-override");
 const path = require("path");
 
 var port = process.env.PORT || 3000  ;
-
+var db = require("./models");
 var app = express();
 
 app.use('/dashboard/', express.static(path.join(__dirname, 'public')));
@@ -87,6 +87,14 @@ app.set("view engine", "handlebars");
 // Import routes
 var routes = require("./routes/html-routes.js");
 
+require("./routes/address-api-routes.js")(app);
+require("./routes/appoiment-api-routes.js")(app);
+require("./routes/business-api-routes.js")(app);
+require("./routes/employee-api-routes.js")(app);
+require("./routes/product-api-routes.js")(app);
+require("./routes/scheduled-api-routes.js")(app);
+require("./routes/service-api-routes.js")(app);
+require("./routes/user-api-routes.js")(app);
 // log all requests to server
 app.use(morgan('tiny'));
 
@@ -94,6 +102,9 @@ app.use(morgan('tiny'));
 app.use("/", routes);
 
 // listens for requests
-app.listen(port, function() {
-    console.log("Listening on PORT " + port);
+db.sequelize.sync({}).then(function() {
+	// listens for requests
+	app.listen(port, function() {
+		console.log("Listening on PORT " + port);
+	});
 });
