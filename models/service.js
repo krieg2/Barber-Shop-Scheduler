@@ -19,7 +19,10 @@ module.exports = (sequelize,DataTypes) => {
     description: {
       type: DataTypes.INTEGER
     },
-
+    price: {
+      type: DataTypes.INTEGER
+      allowNull: false
+    }
   });
 
   //Associate with
@@ -27,11 +30,11 @@ module.exports = (sequelize,DataTypes) => {
 
     //business
     Service.belongsTo(models.Employee, {
-      business_id: {
+      BusinessId: {
         allowNull: false
       }
     });
   };
-  
+
   return Service;
 };
