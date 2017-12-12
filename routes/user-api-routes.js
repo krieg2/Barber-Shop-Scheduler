@@ -1,16 +1,17 @@
+var db = require("../models");
 
 module.exports = app => {
   //Get all User
   app.get("/api/user", (req, res) => {
 
-    User.findAll({}).then( dbUser => {
+    db.User.findAll({}).then( dbUser => {
       res.json(dbUser);
     });
   });
   //Get User id
   app.get("/api/user/:id", (req, res) => {
 
-    User.findOne({
+    db.User.findOne({
       where: {
         id: req.params.id
       },
@@ -22,7 +23,7 @@ module.exports = app => {
   //Get User BusinessId
   app.get("/api/user/business/:BusinessId", (req, res) => {
 
-    User.findOne({
+    db.User.findOne({
       where: {
         BusinessId: req.params.BusinessId
       },
@@ -33,13 +34,14 @@ module.exports = app => {
   });
   //Create new User
   app.post("/api/user", (req, res) => {
-    User.create(req.body).then(function(dbUser) {
+    console.log(req.body)
+    db.User.create(req.body).then( dbUser => {
       res.json(dbUser);
     });
   });
   //Delete User where id
   app.delete("/api/user/:id", (req, res) => {
-    User.destroy({
+    db.User.destroy({
       where: {
         id: req.params.id
       }
@@ -49,7 +51,7 @@ module.exports = app => {
   });
   //Update User where id
   app.put("/api/user", (req, res) => {
-    User.update(
+    db.User.update(
       req.body,
       {
         where: {
