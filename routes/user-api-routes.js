@@ -9,14 +9,13 @@ module.exports = app => {
     });
   });
   //Get User id
-  app.get("/api/user/:id", (req, res) => {
-
+  app.get("/api/User/:id", (req, res) => {
     db.User.findOne({
       where: {
         id: req.params.id
       },
-      include: [{ all: true, nested: true }]
-    }).then( bdUser => {
+        include: [{ all: true, nested: true }]
+      }).then( dbUser => {
       res.json(dbUser);
     });
   });
@@ -34,7 +33,6 @@ module.exports = app => {
   });
   //Create new User
   app.post("/api/user", (req, res) => {
-    console.log(req.body)
     db.User.create(req.body).then( dbUser => {
       res.json(dbUser);
     });
