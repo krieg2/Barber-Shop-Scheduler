@@ -48,7 +48,7 @@ module.exports = (sequelize,DataTypes) => {
         allowNull: false
       }
     });
-    Business.hasMany(models.Service, {
+    Appoiment.hasMany(models.Service, {
       onDelete: 'cascade'
     });
   };

@@ -20,7 +20,7 @@ module.exports = (sequelize,DataTypes) => {
       type: DataTypes.INTEGER
     },
     price: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   });
