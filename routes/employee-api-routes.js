@@ -4,7 +4,9 @@ module.exports = app => {
   //Get all Employee in db
   app.get("/api/employee", (req, res) => {
 
-    db.Employee.findAll({}).then( dbEmployee => {
+    db.Employee.findAll({
+      include: [{ all: true, nested: true }]
+    }).then( dbEmployee => {
       res.json(dbEmployee);
     });
   });

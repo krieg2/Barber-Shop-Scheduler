@@ -21,8 +21,9 @@ app.use('/', express.static(path.join(__dirname, 'public')));
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.urlencoded({
-	extended: false
+  extended: false
 }));
+app.use(bodyParser.json());
 
 // Configure Passport...
 app.use(session({

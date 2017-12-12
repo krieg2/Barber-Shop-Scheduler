@@ -7,19 +7,21 @@ module.exports = (sequelize,DataTypes) => {
       autoIncrement: true,
       allowNull: false
     },
-    time: {
+    service_time: {
       type: DataTypes.STRING,
       allowNull: false
-
     },
-    name: {
+    service_name: {
       type: DataTypes.TEXT,
       allowNull: false
     },
     description: {
-      type: DataTypes.INTEGER
+      type: DataTypes.TEXT
     },
-
+    price: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
   });
 
   //Associate with
@@ -27,11 +29,11 @@ module.exports = (sequelize,DataTypes) => {
 
     //business
     Service.belongsTo(models.Employee, {
-      business_id: {
+      BusinessId: {
         allowNull: false
       }
     });
   };
-  
+
   return Service;
 };

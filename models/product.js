@@ -23,6 +23,10 @@ module.exports = (sequelize,DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: true
     },
+    price: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false
+    }
   });
 
   //Associate with
@@ -30,7 +34,7 @@ module.exports = (sequelize,DataTypes) => {
 
     //business
     Product.belongsTo(models.Product, {
-      business_id: {
+      BusinessId: {
         allowNull: false
       }
     });

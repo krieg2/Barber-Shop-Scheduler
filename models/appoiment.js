@@ -32,24 +32,24 @@ module.exports = (sequelize,DataTypes) => {
       type: DataTypes.TEXT,
       defaultValue: null
     },
-    ServiceId: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    }
+
   });
 
   //Associate with
   Appoiment.associate = models => {
 
     Appoiment.belongsTo(models.Employee,{
-      employee_id: {
+      EmployeeId: {
         allowNull: false
       }
     });
     Appoiment.belongsTo(models.User,{
-      user_id: {
+      UserID: {
         allowNull: false
       }
+    });
+    Appoiment.hasMany(models.Service, {
+      onDelete: 'cascade'
     });
   };
   return Appoiment;
