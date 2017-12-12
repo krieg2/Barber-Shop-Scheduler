@@ -101,9 +101,6 @@ require("./routes/user-api-routes.js")(app);
 // log all requests to server
 app.use(morgan('tiny'));
 
- // give the server access to them.
-app.use("/", routes);
-
 // listens for requests
 db.sequelize.sync({}).then(function() {
 	// listens for requests
