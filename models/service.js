@@ -7,12 +7,11 @@ module.exports = (sequelize,DataTypes) => {
       autoIncrement: true,
       allowNull: false
     },
-    time: {
+    service_time: {
       type: DataTypes.STRING,
       allowNull: false
-
     },
-    name: {
+    service_name: {
       type: DataTypes.TEXT,
       allowNull: false
     },
