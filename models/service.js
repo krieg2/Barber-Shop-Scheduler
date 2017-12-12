@@ -19,6 +19,9 @@ module.exports = (sequelize,DataTypes) => {
     description: {
       type: DataTypes.INTEGER
     },
+    price: {
+      type: DataTypes.INTEGER
+    }
 
   });
 
@@ -32,6 +35,6 @@ module.exports = (sequelize,DataTypes) => {
       }
     });
   };
-  
+
   return Service;
 };

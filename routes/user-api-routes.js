@@ -8,21 +8,19 @@ module.exports = app => {
       res.json(dbUser);
     });
   });
-  //Get User id
+  //Get User where id
   app.get("/api/user/:id", (req, res) => {
-
-    db.User.findOne({
+    db.Service.findOne({
       where: {
         id: req.params.id
       },
       include: [{ all: true, nested: true }]
-    }).then( bdUser => {
+    }).then( dbUser => {
       res.json(dbUser);
     });
   });
   //Get User BusinessId
   app.get("/api/user/business/:BusinessId", (req, res) => {
-
     db.User.findOne({
       where: {
         BusinessId: req.params.BusinessId
