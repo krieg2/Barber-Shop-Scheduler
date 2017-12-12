@@ -19,9 +19,12 @@ module.exports = (sequelize,DataTypes) => {
     description: {
       type: DataTypes.INTEGER
     },
+<<<<<<< HEAD
     price: {
       type: DataTypes.INTEGER
     }
+=======
+>>>>>>> 229a85aeb6e1267f802c903f958d29cfbf9f037e
 
   });
 
@@ -35,6 +38,10 @@ module.exports = (sequelize,DataTypes) => {
       }
     });
   };
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 229a85aeb6e1267f802c903f958d29cfbf9f037e
   return Service;
 };

@@ -10,12 +10,12 @@ module.exports = app => {
   });
   //Get User where id
   app.get("/api/user/:id", (req, res) => {
-    db.Service.findOne({
+    db.User.findOne({
       where: {
         id: req.params.id
       },
       include: [{ all: true, nested: true }]
-    }).then( dbUser => {
+    }).then( bdUser => {
       res.json(dbUser);
     });
   });

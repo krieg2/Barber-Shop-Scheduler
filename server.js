@@ -9,20 +9,17 @@ const GithubStrategy = require("passport-github").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const methodOverride = require("method-override");
-const path = require("path");
+var morgan = require('morgan');
+var db = require("./models");
+
 
 var port = process.env.PORT || 3000  ;
 var db = require("./models");
 var app = express();
 
-app.use('/dashboard/', express.static(path.join(__dirname, 'public')));
-app.use('/client/', express.static(path.join(__dirname, 'public')));
-app.use('/', express.static(path.join(__dirname, 'public')));
 
-// Sets up the Express app to handle data parsing
-app.use(bodyParser.urlencoded({
-	extended: false
-}));
+app.use(express.static("public"));
+
 
 // Configure Passport...
 app.use(session({
