@@ -92,7 +92,7 @@ app.use("/", routes);
 app.use("/auth", authRoutes.router);
 
 require("./routes/address-api-routes.js")(app);
-require("./routes/appoiment-api-routes.js")(app);
+require("./routes/appointment-api-routes.js")(app);
 require("./routes/business-api-routes.js")(app);
 require("./routes/employee-api-routes.js")(app);
 require("./routes/product-api-routes.js")(app);
