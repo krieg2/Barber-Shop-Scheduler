@@ -25,7 +25,7 @@ module.exports = (sequelize,DataTypes) => {
       onDelete: 'cascade'
     });
     Employee.belongsTo(models.User, {
-      user_id:{
+      UserId:{
         allowNull: false
       }
     });

@@ -12,8 +12,8 @@ var hbsObject = {
 // Function to ensure that the user has been authenticated
 // before viewing pages.
 const isLoggedIn = function(req, res, next){
-  console.log("isLoggedIn:"+req.isAuthenticated());
-  console.log("user:"+req.user);
+    //console.log("isLoggedIn:"+req.isAuthenticated());
+    //console.log("user:"+req.user);
     if(req.isAuthenticated()){
         next();
     } else{
@@ -29,19 +29,20 @@ router.get("/", function (req, res) {
 
   var randomPhotoIndex = Math.floor(Math.random() * background_images.length); 
   
-  hbsObject.background_image = background_images[randomPhotoIndex]
+  hbsObject.background_image = background_images[randomPhotoIndex];
+  hbsObject.isLoggedIn = req.isAuthenticated();
   res.render("index", hbsObject);
 });
 
 // Request to API using barberID. User must be authenticated.
-router.get("/dashboard/:barberID", isLoggedIn, function (req, res) {
+router.get("/dashboard/:barberID", function (req, res) {
 
     res.render("dashboardview", hbsObject);
 
 });
 
 // Request to API using clientID. User must be authenticated.
-router.get("/client/:clientID", isLoggedIn, function (req, res) {
+router.get("/client/:clientID", function (req, res) {
 
     res.render("clientview", {keyPublishable: keyPublishable});
 

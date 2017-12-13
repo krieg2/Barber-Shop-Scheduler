@@ -43,7 +43,7 @@ module.exports = (sequelize,DataTypes) => {
   Address.associate = models => {
 
     Address.belongsTo(models.User ,{
-      employee_id: {
+      EmployeeId: {
         allowNull: false
       }
     });

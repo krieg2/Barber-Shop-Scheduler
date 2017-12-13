@@ -57,7 +57,7 @@ module.exports = (sequelize,DataTypes) => {
   Schedule.associate = models => {
 
     Schedule.belongsTo(models.Employee, {
-      employee_id: {
+      EmployeeId: {
         allowNull: false
       }
     });

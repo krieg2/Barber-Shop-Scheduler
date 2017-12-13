@@ -21,8 +21,9 @@ app.use('/', express.static(path.join(__dirname, 'public')));
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.urlencoded({
-	extended: false
+  extended: false
 }));
+app.use(bodyParser.json());
 
 // Configure Passport...
 app.use(session({
@@ -100,9 +101,6 @@ require("./routes/service-api-routes.js")(app);
 require("./routes/user-api-routes.js")(app);
 // log all requests to server
 app.use(morgan('tiny'));
-
- // give the server access to them.
-app.use("/", routes);
 
 // listens for requests
 db.sequelize.sync({}).then(function() {

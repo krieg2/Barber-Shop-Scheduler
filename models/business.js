@@ -14,7 +14,8 @@ module.exports = (sequelize,DataTypes) => {
     },
     category: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      defaultValue: 'barbershop'
     },
     photo: {
       type: DataTypes.TEXT,
