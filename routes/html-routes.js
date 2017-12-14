@@ -24,12 +24,17 @@ const isLoggedIn = function(req, res, next){
 // Main page where users can sign in. No authentication required here.
 router.get("/", function (req, res) {
 
-  var background_images = ["../img/barber1.jpg","../img/barber2.jpg","../img/barber3.jpg","../img/barber4.jpg","../img/barber5.jpg"]
+  var background_images = ["../img/barber1.jpg", "../img/barber2.jpg",
+                           "../img/barber3.jpg", "../img/barber4.jpg",
+                           "../img/barber5.jpg"]
 
   var randomPhotoIndex = Math.floor(Math.random() * background_images.length);
 
   hbsObject.background_image = background_images[randomPhotoIndex];
   hbsObject.isLoggedIn = req.isAuthenticated();
+  if(req.user){
+      hbsObject.name = req.user.first_name;
+  }
 
   res.render("index", hbsObject);
 });

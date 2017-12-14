@@ -93,15 +93,21 @@ module.exports = function(passport){
     });
 
     router.get("/logout", function(req, res){
-      req.logout();
-      req.session.destroy(function(err) {
-        if (err){
-          console.error(err);
-        } else {
-          res.clearCookie("server-session-cookie-id");
-          res.redirect("/");
-        }
-      });
+      if(req.user){
+        req.logout();
+      }
+      if(req.session){
+        req.session.destroy(function(err) {
+          if (err){
+            console.error(err);
+          } else {
+            res.clearCookie("server-session-cookie-id");
+            res.redirect("/");
+          }
+        });
+      } else{
+        res.redirect("/");
+      }
 
     });
 
