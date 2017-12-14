@@ -11,7 +11,7 @@ module.exports.setRoutes = function(passport){
           req.login(req.user, function(err){
             if(err) { return next(err); }
             req.session.save(function(){
-                res.redirect("/client/987654");
+                res.redirect("/api/employee");
             });
           });
     });
