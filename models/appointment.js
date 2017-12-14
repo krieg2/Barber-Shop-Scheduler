@@ -5,15 +5,24 @@ module.exports = (sequelize,DataTypes) => {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true,
+      // autoIncrement: true,
       allowNull: false
     },
+<<<<<<< HEAD:models/appointment.js
     appointmentFrom: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
     appointmentTo: {
       type: DataTypes.INTEGER,
+=======
+    from: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    to: {
+      type: DataTypes.STRING,
+>>>>>>> SosaDev:models/appointment.js
       allowNull: false
     },
     appointmentDate: {
@@ -21,11 +30,11 @@ module.exports = (sequelize,DataTypes) => {
       allowNull: false
     },
     wait_time: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       defaultValue: null
     },
     rating: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       defaultValue: null
     },
     feedback: {
@@ -51,6 +60,12 @@ module.exports = (sequelize,DataTypes) => {
         allowNull: false
       }
     });
+<<<<<<< HEAD:models/appointment.js
+=======
+    Appointment.hasMany(models.Service, {
+      onDelete: 'cascade'
+    });
+>>>>>>> SosaDev:models/appointment.js
   };
   return Appointment;
 };
