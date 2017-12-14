@@ -37,23 +37,45 @@ module.exports = function(app){
         callbackURL: "http://localhost:3000/auth/google/callback"
     }, (accessToken, refreshToken, profile, done) => {
 
-        console.log(profile);
+        //console.log(profile);
         db.User.findOne({
           where: {
             google_id: profile.id
           }
         }).then( user => {
+
           if(!user){
-            var newUser = {
-              google_id: profile.id,
-              first_name: profile._json.name.givenName,
-              last_name: profile._json.name.familyName,
-              email: profile.emails[0].value
-            }
-            // Create the new user.
-            db.User.create( newUser
-            ).then(function(nUser){
-                return done(null, nUser);
+            // Find user by email.
+            db.User.findOne({
+              where: {
+                email: profile.emails[0].value
+              }
+            }).then( user => {
+
+              if(!user){
+                // Create a user based on the returned profile.
+                let first = profile._json.name.givenName;
+                first = first.charAt(0).toUpperCase() + first.slice(1);
+                let last = profile._json.name.familyName;
+                last = last.charAt(0).toUpperCase() + last.slice(1);
+                let newUser = {
+                  google_id: profile.id,
+                  first_name: first,
+                  last_name: last,
+                  email: profile.emails[0].value
+                }
+                // Create the new user.
+                db.User.create( newUser
+                ).then(function(nUser){
+                    return done(null, nUser);
+                });
+              } else{
+                // Update the existing user with a google_id.
+                user.google_id = profile.id;
+                user.save({fields: ["google_id"]}).then( () => {
+                  return done(null, user);
+                });
+              }
             });
           } else{
             return done(null, user);
@@ -68,24 +90,47 @@ module.exports = function(app){
         callbackURL: "http://localhost:3000/auth/github/callback"
     }, (accessToken, refreshToken, profile, done) => {
 
-        console.log(profile);
+        //console.log(profile);
         db.User.findOne({
           where: {
             github_id: profile.id
           }
         }).then( user => {
+
           if(!user){
-            var names = profile._json.name.split(" ");
-            var newUser = {
-              github_id: profile.id,
-              first_name: names[0],
-              last_name: names[1],
-              email: profile._json.email
-            }
-            // Create the new user.
-            db.User.create( newUser
-            ).then(function(nUser){
-                return done(null, nUser);
+            // Find user by email.
+            db.User.findOne({
+              where: {
+                email: profile._json.email
+              }
+            }).then( user => {
+
+              if(!user){
+                // Create a user based on the returned profile.
+                let names = profile._json.name.split(" ");
+                let first = names[0];
+                first = first.charAt(0).toUpperCase() + first.slice(1);
+                let last = names[1];
+                last = last.charAt(0).toUpperCase() + last.slice(1);
+                let newUser = {
+                  github_id: profile.id,
+                  first_name: first,
+                  last_name: last,
+                  email: profile._json.email
+                }
+                // Create the new user.
+                db.User.create(
+                  newUser
+                ).then(function(nUser){
+                    return done(null, nUser);
+                });
+              } else{
+                // Update the existing user with a github_id.
+                user.github_id = profile.id;
+                user.save({fields: ["github_id"]}).then( () => {
+                  return done(null, user);
+                });
+              }
             });
           } else{
             return done(null, user);
@@ -101,23 +146,49 @@ module.exports = function(app){
         passReqToCallback: true
     }, (req, accessToken, refreshToken, profile, done) => {
 
+       //console.log(profile);
         db.User.findOne({
           where: {
             facebook_id: profile.id
           }
         }).then( user => {
+
           if(!user){
-            var names = profile.displayName.split(" ");
-            var newUser = {
-              facebook_id: profile.id,
-              first_name: profile.name.givenName ? profile.name.givenName : names[0],
-              last_name: profile.name.familyName ? profile.name.familyName : names[1],
-              email: profile.email ? profile.email : "temp@blank.com"
-            }
-            // Create the new user.
-            db.User.create( newUser
-            ).then(function(nUser){
-                return done(null, nUser);
+            // Find user by first and last name.
+            let names = profile.displayName.split(" ");
+            db.User.findOne({
+              where: {
+                first_name: names[0],
+                last_name: names[1]
+              }
+            }).then( user => {
+
+              if(!user){
+                // Create a user based on the returned profile.
+                let names = profile.displayName.split(" ");
+                let first = names[0];
+                first = first.charAt(0).toUpperCase() + first.slice(1);
+                let last = names[1];
+                last = last.charAt(0).toUpperCase() + last.slice(1);
+                let newUser = {
+                  facebook_id: profile.id,
+                  first_name: profile.name.givenName ? profile.name.givenName : first,
+                  last_name: profile.name.familyName ? profile.name.familyName : last,
+                  email: profile.email ? profile.email : "temp@blank.com"
+                }
+                // Create the new user.
+                db.User.create(
+                  newUser
+                ).then(function(nUser){
+                    return done(null, nUser);
+                });
+              } else{
+                // Update the existing user with a facebook_id.
+                user.facebook_id = profile.id;
+                user.save({fields: ["facebook_id"]}).then( () => {
+                  return done(null, user);
+                });
+              }
             });
           } else{
             return done(null, user);
