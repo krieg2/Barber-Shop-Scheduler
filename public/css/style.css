@@ -1,3 +1,9 @@
+.navbar-brand, .js-scroll-trigger {
+    font-size: 28px;
+    font-weight: 800;
+    text-shadow: 2px 2px black;
+}
+
 .close {
 	margin-right: 10px;
 	margin-top: 5px;

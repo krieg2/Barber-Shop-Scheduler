@@ -8,8 +8,6 @@ const port = process.env.PORT || 3000  ;
 const app = express();
 require("dotenv").config();
 
-console.log(process.env);
-
 app.use('/dashboard/', express.static(path.join(__dirname, 'public')));
 app.use('/client/', express.static(path.join(__dirname, 'public')));
 app.use('/', express.static(path.join(__dirname, 'public')));
