@@ -21,7 +21,7 @@ module.exports = (sequelize,DataTypes) => {
     Employee.hasMany(models.Service, {
       onDelete: 'cascade'
     });
-    Employee.hasMany(models.Appoiment, {
+    Employee.hasMany(models.Appointment, {
       onDelete: 'cascade'
     });
     Employee.belongsTo(models.User, {

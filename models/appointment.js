@@ -1,22 +1,22 @@
-//export Appoiment tablet
+//export appointment tablet
 module.exports = (sequelize,DataTypes) => {
 
-  var Appoiment = sequelize.define('Appoiment', {
+  var Appointment = sequelize.define('Appointment', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
       allowNull: false
     },
-    from: {
+    appointmentFrom: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    to: {
+    appointmentTo: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    date: {
+    appointmentDate: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -32,25 +32,25 @@ module.exports = (sequelize,DataTypes) => {
       type: DataTypes.TEXT,
       defaultValue: null
     },
+    serviceId:{
+      type: DataTypes.INTEGER,
+    }
 
   });
 
   //Associate with
-  Appoiment.associate = models => {
+  Appointment.associate = models => {
 
-    Appoiment.belongsTo(models.Employee,{
+    Appointment.belongsTo(models.Employee,{
       EmployeeId: {
         allowNull: false
       }
     });
-    Appoiment.belongsTo(models.User,{
+    Appointment.belongsTo(models.User,{
       UserID: {
         allowNull: false
       }
     });
-    Appoiment.hasMany(models.Service, {
-      onDelete: 'cascade'
-    });
   };
-  return Appoiment;
+  return Appointment;
 };

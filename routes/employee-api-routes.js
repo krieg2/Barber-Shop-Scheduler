@@ -7,7 +7,7 @@ module.exports = app => {
     db.Employee.findAll({
       include: [{ all: true, nested: true }]
     }).then( dbEmployee => {
-      res.json(dbEmployee);
+      res.render("clientview", dbEmployee);
     });
   });
   //get Employee where id

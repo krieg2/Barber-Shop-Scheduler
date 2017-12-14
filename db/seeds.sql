@@ -64,3 +64,6 @@ INSERT Addresses(UserID,street,city,state,zip_code,createdAt,updatedAt)
 VALUE('4','161 Newkirk St','Jersey City', 'NJ', '07306',now(),now());
 INSERT Addresses(UserID,street,city,state,zip_code,createdAt,updatedAt)
 VALUE('5','161 Newkirk St','Jersey City', 'NJ', '07306',now(),now());
+/*appoimente*/
+INSERT Appointment(appointmentFrom,appointmentTo,appointmentDate,EmployeeId,UserId,ServiceId,createdAt,updatedAt)
+VALUE('800','900','11/13/2017','1','2','1',now(),now());

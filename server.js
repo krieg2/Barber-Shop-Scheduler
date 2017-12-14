@@ -92,7 +92,7 @@ app.use("/", routes);
 app.use("/auth", authRoutes.router);
 
 require("./routes/address-api-routes.js")(app);
-require("./routes/appoiment-api-routes.js")(app);
+require("./routes/appointment-api-routes.js")(app);
 require("./routes/business-api-routes.js")(app);
 require("./routes/employee-api-routes.js")(app);
 require("./routes/product-api-routes.js")(app);
@@ -103,7 +103,7 @@ require("./routes/user-api-routes.js")(app);
 app.use(morgan('tiny'));
 
 // listens for requests
-db.sequelize.sync({}).then(function() {
+db.sequelize.sync({ force: true}).then(function() {
 	// listens for requests
 	app.listen(port, function() {
 		console.log("Listening on PORT " + port);
