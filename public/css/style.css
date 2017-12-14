@@ -20,6 +20,14 @@
 	clear: left;
 }
 
+.separatOR {
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    color: #A9A9A9;
+    font-family: "Georgia", serif;
+}
+
 .login-area {
     padding: 2em;
 }

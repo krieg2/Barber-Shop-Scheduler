@@ -169,6 +169,7 @@ module.exports = function(app){
               first_name: req.body.first_name,
               last_name: req.body.last_name,
               email: req.body.email,
+              user_type: req.body.user_type,
               password: bcrypt.hashSync(req.body.password, 10) // Encrypt passwrd.
             }
             // Create the new user.
