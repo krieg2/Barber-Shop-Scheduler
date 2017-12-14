@@ -1,0 +1,33 @@
+<ul class="provider-list">
+  <li class="provider-item">
+    <a href="/auth/google">
+      <button class="provider-button google" data-mode="signup" data-provider-id="google">
+        <img class="provider-icon" alt="" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg">
+        <span class="provider-text">Sign up with Google</span>
+      </button></a>
+  </li>
+  <li class="provider-item">
+    <a href="/auth/github">
+      <button class="provider-button github" data-mode="signup" data-provider-id="github">
+        <img class="provider-icon" alt="" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/github.svg">
+        <span class="provider-text">Sign up with GitHub</span>
+      </button></a>
+  </li>
+  <li class="provider-item">
+    <a href="/auth/facebook">
+      <button class="provider-button facebook" data-mode="signup" data-provider-id="facebook">
+        <img class="provider-icon" alt="" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/facebook.svg">
+        <span class="provider-text">Sign up with Facebook</span>
+      </button></a>
+  </li>
+</ul>
+
+<form action="/auth/signup" method="post" autocomplete="on">
+  <input type="radio" name="user_type" value="client"> Customer<br>
+  <input type="radio" name="user_type" value="barber"> Barber<br><br>
+  <input type="text" name="first_name" class="form-field" placeholder="First Name" autocomplete="given-name" required>
+  <input type="text" name="last_name" class="form-field" placeholder="Last Name" autocomplete="family-name" required>
+  <input type="email" name="email" class="form-field" placeholder="Email" autocomplete="username email" required>
+  <input type="password" name="password" class="form-field" placeholder="Password" autocomplete="new-password" required>
+  <input type="submit" value="Sign Up">
+</form>

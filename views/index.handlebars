@@ -37,9 +37,10 @@
         <div class="intro-text">
           <div class="intro-lead-in">Welcome To The Barber Scheduler!</div>
           <div class="intro-heading text-uppercase">It's Nice To Meet You</div>
+
           {{#unless isLoggedIn}}
-            <a class="btn btn-danger btn-xl text-uppercase" data-toggle="modal" href="#signInModal">Customer Sign In</a>
-            <a class="btn btn-primary btn-xl text-uppercase" href="./dashboard/123456">Barber Sign In</a>
+            <a class="btn btn-danger btn-xl text-uppercase" data-toggle="modal" href="#signInModal">Sign In</a>
+            <a class="btn btn-primary btn-xl text-uppercase" data-toggle="modal" href="#signUpModal">Sign Up</a>
           {{else}}
             <a class="btn btn-primary btn-xl text-uppercase" href="/auth/logout">Logout</a>
           {{/unless}}
@@ -485,14 +486,37 @@
                 <div class="modal-body">
 
                   <div class="login-area">
-                    {{> passport }}
-                    <!-- form action="#" method="post">
-                        <input type="email" name="email" class="email" placeholder="Email" required="">
-                        <input type="password" name="password" class="password" placeholder="Password" required="">
-                        <input type="submit" value="Sign In">
-                      </form -->
+                    {{> passport-signin }}
                   </div>
                 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sign up modal -->
+    <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content signInModal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <h1 class="text-center">Sign up:</h1>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12 mx-auto">
+                <div class="modal-body">
+
+                  <div class="login-area">
+                    {{> passport-signup }}
+                  </div>
+                
+                </div>
               </div>
             </div>
           </div>
@@ -723,12 +747,13 @@
     <!-- developer application scripts for this page -->
 
     <script src="js/javascript.js"></script>
-<style>
-  header.masthead {
-    background-image : url({{background_image}})
-  }
 
-</style>
+    <style>
+      header.masthead {
+        background-image : url({{background_image}})
+      }
+
+    </style>
 
   </body>
 

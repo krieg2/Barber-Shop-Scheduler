@@ -40,12 +40,28 @@ module.exports = (sequelize,DataTypes) => {
     },
     user_type: {
       type: DataTypes.STRING,
-      defaultValue: 'client',
+      defaultValue: "",
       allowNull: false
     },
     appoiments_id: {
       type: DataTypes.INTEGER,
       defaultValue: null
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    google_id: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    github_id: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    facebook_id: {
+      type: DataTypes.STRING,
+      allowNull: true
     }
   });
   return User;
