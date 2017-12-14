@@ -51,12 +51,6 @@ module.exports = (sequelize,DataTypes) => {
         allowNull: false
       }
     });
-<<<<<<< HEAD:models/appointment.js
-=======
-    Appointment.hasMany(models.Service, {
-      onDelete: 'cascade'
-    });
->>>>>>> SosaDev:models/appointment.js
   };
   return Appointment;
 };
