@@ -43,7 +43,7 @@ module.exports = (sequelize,DataTypes) => {
       defaultValue: 'client',
       allowNull: false
     },
-    appoiments_id: {
+    appointments_id: {
       type: DataTypes.INTEGER,
       defaultValue: null
     }
