@@ -2,9 +2,9 @@ var db = require("../models");
 
 module.exports = app => {
 
-  //Get Appointment where id
-  app.get("/api/appointment/:id", (req, res) => {
-    db.Appointment.findOne({
+  //Get Appoiment where id
+  app.get("/api/appoiment/:id", (req, res) => {
+    db.Appoiment.findOne({
       where: {
         id: req.params.id
       },
@@ -12,62 +12,62 @@ module.exports = app => {
         {model: db.User},
         {model: db.Employee}
       ]
-    }).then( dbAppointment => {
-      res.json(dbAppointment);
+    }).then( dbAppoiment => {
+      res.json(dbAppoiment);
     });
   });
-  //Get Appointment where UserId
-  app.get("/api/appointment/user/:id", (req, res) => {
-    db.Appointment.findAll({
+  //Get Appoiment where UserId
+  app.get("/api/appoiment/user/:id", (req, res) => {
+    db.Appoiment.findAll({
       where: {
         UserId: req.params.id
       },
       include: [
         {model: db.Employee}
       ]
-    }).then( dbAppointment => {
-      res.json(dbAppointment);
+    }).then( dbAppoiment => {
+      res.json(dbAppoiment);
     });
   });
-  //Get Appointment where EmployeeID
-  app.get("/api/appointment/employee/:id", (req, res) => {
-    db.Appointment.findAll({
+  //Get Appoiment where EmployeeID
+  app.get("/api/appoiment/employee/:id", (req, res) => {
+    db.Appoiment.findAll({
       where: {
         EmployeeID: req.params.id
       },
       include: [
         {model: db.User}
       ]
-    }).then( dbAppointment => {
-      res.json(dbAppointment);
+    }).then( dbAppoiment => {
+      res.json(dbAppoiment);
     });
   });
-  //Create Appointment where id
-  app.post("/api/appointment", (req, res) => {
-    db.Appointment.create(req.body).then( dbAppointment => {
-      res.json(dbAppointment);
+  //Create Appoiment where id
+  app.post("/api/appoiment", (req, res) => {
+    db.Appoiment.create(req.body).then( dbAppoiment => {
+      res.json(dbAppoiment);
     });
   });
-  //Delete Appointment where id
-  app.delete("/api/appointment/:id", (req, res) => {
-    db.Appointment.destroy({
+  //Delete Appoiment where id
+  app.delete("/api/appoiment/:id", (req, res) => {
+    db.Appoiment.destroy({
       where: {
         id: req.params.id
       }
-    }).then( dbAppointment => {
-      res.json(dbAppointment);
+    }).then( dbAppoiment => {
+      res.json(dbAppoiment);
     });
   });
-  //Update Appointment where id
-  app.put("/api/appointment", (req, res) => {
-    db.Appointment.update(
+  //Update Appoiment where id
+  app.put("/api/appoiment", (req, res) => {
+    db.Appoiment.update(
       req.body,
       {
         where: {
           id: req.body.id
         }
-      }).then( bdAppointment => {
-        res.json(dbAppointment);
+      }).then( bdAppoiment => {
+        res.json(dbAppoiment);
       });
   });
 };
