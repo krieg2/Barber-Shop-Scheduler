@@ -1,10 +1,10 @@
-.close{
+.close {
 	margin-right: 10px;
 	margin-top: 5px;
 	cursor: pointer;
 }
 
-.signInModal-content{
+.signInModal-content {
     background-color: #F5F5F5;
 }
 
@@ -18,13 +18,13 @@
     padding: 2em;
 }
 
-.email, .password{
+.form-field {
     outline: none;
     font-size: 1em;
     color: #000;
     padding: 1em .5em;
     margin: 0;
-    width: 95%;
+    width: 100%;
     border: none;
     border: 1px solid #999;
     -webkit-appearance: none;

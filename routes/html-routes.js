@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const keys = require("../config/keys.js");
-const keyPublishable = keys.stripe.publicKey;
-const keySecret = keys.stripe.secretKey;
+const db = require("../models");
+const keyPublishable = process.env.STRIPE_PUBLIC_KEY;
+const keySecret = process.env.STRIPE_SECRET_KEY;
 const stripe = require("stripe")(keySecret);
 
 var hbsObject = {
@@ -12,8 +12,7 @@ var hbsObject = {
 // Function to ensure that the user has been authenticated
 // before viewing pages.
 const isLoggedIn = function(req, res, next){
-    //console.log("isLoggedIn:"+req.isAuthenticated());
-    //console.log("user:"+req.user);
+
     if(req.isAuthenticated()){
         next();
     } else{
@@ -31,6 +30,7 @@ router.get("/", function (req, res) {
 
   hbsObject.background_image = background_images[randomPhotoIndex];
   hbsObject.isLoggedIn = req.isAuthenticated();
+
   res.render("index", hbsObject);
 });
 
@@ -47,12 +47,52 @@ router.get("/client/:clientID", function (req, res) {
     res.render("clientview", {keyPublishable: keyPublishable});
 
 });
+
+// Determine if user is a client or barber.
+router.get("/clientorbarber/:provider", function (req, res) {
+
+    var idField = req.params.provider + "_id";
+    var userId = req.user[idField];
+
+    db.User.findOne( { where: { [idField]: userId }} ).then( (user) => {
+    
+      if(user.user_type === "barber"){
+        res.redirect("/dashboard/" + user.id);
+      } else if(user.user_type === "client"){
+        res.redirect("/client/" + user.id);
+      } else{
+        res.render("clientorbarber", {userId: userId,
+                                      idField: idField});
+      }
+    });
+    
+});
+router.post("/clientorbarber", function (req, res) {
+
+    var userType = req.body.user_type;
+
+    db.User.findOne( { where: { [req.body.idField]: req.body.id }}
+    ).then( (user) => {
+
+      user.user_type = userType;
+      user.save({fields: ["user_type"]}).then( () => {
+        if(userType === "barber"){
+          res.redirect("/dashboard/" + user.id);
+        } else if(userType === "client"){
+          res.redirect("/client/" + user.id);
+        } else{
+          res.redirect("/");
+        }
+      });
+    });
+});
+
 // Stripe payments route.
 router.post("/charge", function (req, res) {
   let amount = 500;
 
   stripe.customers.create({
-     email: req.body.stripeEmail,
+    email: req.body.stripeEmail,
     source: req.body.stripeToken
   })
   .then(customer =>
