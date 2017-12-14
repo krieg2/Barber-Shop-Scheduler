@@ -1,4 +1,4 @@
-const express = require("express");
+ const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const passport = require("passport");
@@ -103,7 +103,7 @@ require("./routes/user-api-routes.js")(app);
 app.use(morgan('tiny'));
 
 // listens for requests
-db.sequelize.sync({force: true}).then(function() {
+db.sequelize.sync({}).then(function() {
 	// listens for requests
 	app.listen(port, function() {
 		console.log("Listening on PORT " + port);

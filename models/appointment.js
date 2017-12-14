@@ -8,21 +8,12 @@ module.exports = (sequelize,DataTypes) => {
       // autoIncrement: true,
       allowNull: false
     },
-<<<<<<< HEAD:models/appointment.js
     appointmentFrom: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
     appointmentTo: {
       type: DataTypes.INTEGER,
-=======
-    from: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    to: {
-      type: DataTypes.STRING,
->>>>>>> SosaDev:models/appointment.js
       allowNull: false
     },
     appointmentDate: {
