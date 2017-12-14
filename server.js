@@ -10,6 +10,7 @@ require("dotenv").config();
 
 console.log(process.env);
 
+app.use('/clientorbarber', express.static(path.join(__dirname, 'public')));
 app.use('/dashboard/', express.static(path.join(__dirname, 'public')));
 app.use('/client/', express.static(path.join(__dirname, 'public')));
 app.use('/', express.static(path.join(__dirname, 'public')));
@@ -49,7 +50,7 @@ require("./routes/user-api-routes.js")(app);
 app.use(morgan('tiny'));
 
 // listens for requests
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({}).then(function() {
     // listens for requests
     app.listen(port, function() {
         console.log("Listening on PORT " + port);

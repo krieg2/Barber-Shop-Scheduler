@@ -12,12 +12,14 @@ module.exports = app => {
         {model: db.User},
         {model: db.Employee}
       ]
-    }).then( dbAppoiment => {
+    }).then( dbAppointment => {
       res.json(dbAppointment);
     });
   });
   //Get Appoiment where UserId
+
   app.get("/api/appointment/user/:id", (req, res) => {
+    
     db.Appointment.findAll({
       where: {
         UserId: req.params.id
@@ -26,7 +28,7 @@ module.exports = app => {
         {model: db.Employee}
       ]
     }).then( dbAppointment => {
-      res.json(dbAppoiment);
+      res.json(dbAppointment);
     });
   });
   //Get Appoiment where EmployeeID
@@ -45,7 +47,7 @@ module.exports = app => {
   //Create Appoiment where id
   app.post("/api/appointment", (req, res) => {
     db.Appointment.create(req.body).then( dbAppointment => {
-      res.json(dbAppoitment);
+      res.json(dbAppointment);
     });
   });
   //Delete Appoiment where id
@@ -66,7 +68,7 @@ module.exports = app => {
         where: {
           id: req.body.id
         }
-      }).then( bdAppointment => {
+      }).then( dbAppointment => {
         res.json(dbAppointment);
       });
   });
