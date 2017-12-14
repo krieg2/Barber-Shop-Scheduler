@@ -1,19 +1,19 @@
 //export Appoiment tablet
 module.exports = (sequelize,DataTypes) => {
 
-  var Appoiment = sequelize.define('Appoiment', {
+  var Appointment = sequelize.define('Appointment', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true,
+      // autoIncrement: true,
       allowNull: false
     },
     from: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false
     },
     to: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false
     },
     date: {
@@ -21,11 +21,11 @@ module.exports = (sequelize,DataTypes) => {
       allowNull: false
     },
     wait_time: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       defaultValue: null
     },
     rating: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       defaultValue: null
     },
     feedback: {
@@ -36,21 +36,21 @@ module.exports = (sequelize,DataTypes) => {
   });
 
   //Associate with
-  Appoiment.associate = models => {
+  Appointment.associate = models => {
 
-    Appoiment.belongsTo(models.Employee,{
+    Appointment.belongsTo(models.Employee,{
       EmployeeId: {
         allowNull: false
       }
     });
-    Appoiment.belongsTo(models.User,{
+    Appointment.belongsTo(models.User,{
       UserID: {
         allowNull: false
       }
     });
-    Appoiment.hasMany(models.Service, {
+    Appointment.hasMany(models.Service, {
       onDelete: 'cascade'
     });
   };
-  return Appoiment;
+  return Appointment;
 };
