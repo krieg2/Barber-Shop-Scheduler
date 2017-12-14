@@ -47,9 +47,6 @@ router.get("/client/:clientID", function (req, res) {
     res.render("clientview", {keyPublishable: keyPublishable});
 
 });
-router.get("/api/employee", (req, res) => {
-  res.render("clientview", res);
-});
 // Stripe payments route.
 router.post("/charge", function (req, res) {
   let amount = 500;
