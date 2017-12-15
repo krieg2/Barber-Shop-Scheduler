@@ -1,4 +1,4 @@
- const express = require("express");
+const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const methodOverride = require("method-override");
@@ -8,7 +8,6 @@ const port = process.env.PORT || 3000  ;
 const app = express();
 require("dotenv").config();
 
-app.use('/clientorbarber/', express.static(path.join(__dirname, 'public')));
 app.use('/dashboard/', express.static(path.join(__dirname, 'public')));
 app.use('/client/', express.static(path.join(__dirname, 'public')));
 app.use('/', express.static(path.join(__dirname, 'public')));
@@ -48,7 +47,7 @@ require("./routes/user-api-routes.js")(app);
 app.use(morgan('tiny'));
 
 // listens for requests
-db.sequelize.sync({ force: false }).then(function() {
+db.sequelize.sync({}).then(function() {
     // listens for requests
     app.listen(port, function() {
         console.log("Listening on PORT " + port);

@@ -50,10 +50,10 @@ router.get("/dashboard/:barberID", function (req, res) {
 router.get("/client/:clientID", function (req, res) {
 
     //{keyPublishable: keyPublishable}
-    db.User.findAll( { where: { user_type: "barber" }}
-    ).then( (users) => {
-
-      res.render("clientview", {barbers: users});
+    db.Employee.findAll({}
+    ).then( (Employee) => {
+      console.log(Employee);
+      res.render("clientview", {barbers: Employee});
     });
 
 });
@@ -65,7 +65,7 @@ router.get("/clientorbarber/:provider", function (req, res) {
     var userId = req.user[idField];
 
     db.User.findOne( { where: { [idField]: userId }} ).then( (user) => {
-    
+
       if(user.user_type === "barber"){
         res.redirect("/dashboard/" + user.id);
       } else if(user.user_type === "client"){
@@ -75,7 +75,7 @@ router.get("/clientorbarber/:provider", function (req, res) {
                                       idField: idField});
       }
     });
-    
+
 });
 router.post("/clientorbarber", function (req, res) {
 
