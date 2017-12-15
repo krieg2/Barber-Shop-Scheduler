@@ -3,6 +3,16 @@ $(document).ready( function(){
 
 
     $("a[href='#bookingModal']").on("click", function(event) {
+    	var busId = $(this).data("id");
+
+    	$.ajax({
+          url: "/api/employee/business/"+busId,
+          method: "GET"
+        }).done(function(response){
+
+            console.log(response);
+
+        });
 
     });
 
