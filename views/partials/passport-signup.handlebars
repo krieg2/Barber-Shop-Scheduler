@@ -21,13 +21,13 @@
       </button></a>
   </li>
 </ul>
-
+<h5 class="separatOR"> - Or - </h1>
 <form action="/auth/signup" method="post" autocomplete="on">
-  <input type="radio" name="user_type" value="client"> Customer<br>
-  <input type="radio" name="user_type" value="barber"> Barber<br><br>
   <input type="text" name="first_name" class="form-field" placeholder="First Name" autocomplete="given-name" required>
   <input type="text" name="last_name" class="form-field" placeholder="Last Name" autocomplete="family-name" required>
   <input type="email" name="email" class="form-field" placeholder="Email" autocomplete="username email" required>
   <input type="password" name="password" class="form-field" placeholder="Password" autocomplete="new-password" required>
+  <input type="radio" name="user_type" value="client" required> Customer<br>
+  <input type="radio" name="user_type" value="barber" required> Barber<br><br>
   <input type="submit" value="Sign Up">
 </form>

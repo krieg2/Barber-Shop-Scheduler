@@ -24,12 +24,17 @@ const isLoggedIn = function(req, res, next){
 // Main page where users can sign in. No authentication required here.
 router.get("/", function (req, res) {
 
-  var background_images = ["../img/barber1.jpg","../img/barber2.jpg","../img/barber3.jpg","../img/barber4.jpg","../img/barber5.jpg"]
+  var background_images = ["../img/barber1.jpg", "../img/barber2.jpg",
+                           "../img/barber3.jpg", "../img/barber4.jpg",
+                           "../img/barber5.jpg"]
 
   var randomPhotoIndex = Math.floor(Math.random() * background_images.length);
 
   hbsObject.background_image = background_images[randomPhotoIndex];
   hbsObject.isLoggedIn = req.isAuthenticated();
+  if(req.user){
+      hbsObject.name = req.user.first_name;
+  }
 
   res.render("index", hbsObject);
 });
@@ -44,7 +49,12 @@ router.get("/dashboard/:barberID", function (req, res) {
 // Request to API using clientID. User must be authenticated.
 router.get("/client/:clientID", function (req, res) {
 
-    res.render("clientview", {keyPublishable: keyPublishable});
+    //{keyPublishable: keyPublishable}
+    db.User.findAll( { where: { user_type: "barber" }}
+    ).then( (users) => {
+
+      res.render("clientview", {barbers: users});
+    });
 
 });
 

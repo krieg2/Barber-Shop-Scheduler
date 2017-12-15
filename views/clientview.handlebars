@@ -1,25 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-
-  <head>
-
-    <title>Find A Barber</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/1-col-portfolio.css" rel="stylesheet">
-
-  </head>
-
   <body>
-    <script>
-    </script>
+    <!-- Custom styles for this template -->
+    <link href="css/agency.css" rel="stylesheet">
+    <link href="css/1-col-portfolio.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Start Bootstrap</a>
+        <a class="navbar-brand-2" href="#">Barber Scheduler</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -39,6 +27,10 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Contact</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/auth/logout">
+                <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+            </li>            
           </ul>
         </div>
       </div>
@@ -66,8 +58,9 @@
       </script>
       </form> -->
       <!-- Project One -->
-
-        {{>barbers}}
+        {{#each barbers}}
+          {{> barbers }}
+        {{/each}}
       <!-- /.row -->
 
 
@@ -110,8 +103,6 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="js/clientJavascript.js"></script>
+    <script src="js/clientJavascript.js"></script>
 
   </body>
-
-</html>

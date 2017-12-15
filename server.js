@@ -8,9 +8,12 @@ const port = process.env.PORT || 3000  ;
 const app = express();
 require("dotenv").config();
 
+<<<<<<< HEAD
 console.log(process.env);
 
 app.use('/clientorbarber', express.static(path.join(__dirname, 'public')));
+=======
+>>>>>>> 2f932c327ec73e630f3e8f36e3b288a9ce6cd0d0
 app.use('/dashboard/', express.static(path.join(__dirname, 'public')));
 app.use('/client/', express.static(path.join(__dirname, 'public')));
 app.use('/', express.static(path.join(__dirname, 'public')));
@@ -50,7 +53,11 @@ require("./routes/user-api-routes.js")(app);
 app.use(morgan('tiny'));
 
 // listens for requests
+<<<<<<< HEAD
 db.sequelize.sync({}).then(function() {
+=======
+db.sequelize.sync({ force: false }).then(function() {
+>>>>>>> 2f932c327ec73e630f3e8f36e3b288a9ce6cd0d0
     // listens for requests
     app.listen(port, function() {
         console.log("Listening on PORT " + port);
