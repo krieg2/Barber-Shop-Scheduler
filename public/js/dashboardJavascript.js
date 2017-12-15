@@ -1,5 +1,72 @@
 $(document).ready(function () {
     console.log("Page ready!");
+
+    function refreshBusinessList(){
+
+        $.ajax({
+          url: "/api/business/",
+          method: "GET"
+        }).done(function(response){
+            //console.log(response);
+            $("#business").empty();
+            for(var i=0; i < response.length; i++){
+                var item = $("<option>");
+                item.text(response[i].business_name);
+                item.val(response[i].id);
+                $("#business").append(item);
+            }
+        });
+    }
+
+    $("a[href='#profileModal']").on("click", function(event) {
+
+        $.ajax({
+          url: "/auth/user/",
+          method: "GET"
+        }).done(function(response){
+            //console.log(response);
+            $("#userId").val(response.id);
+        });
+
+        refreshBusinessList();
+    });
+
+    $("#addEm").submit(function(event) {
+
+        event.preventDefault();
+
+        var data = {
+          BusinessId: $("#business").val(),
+          UserId: $("#userId").val()
+        };
+        $.ajax({
+          url: "/api/employee/",
+          method: "POST",
+          data: data
+        }).done(function(response){
+            console.log(response);
+        });
+
+    });
+
+    $("#addBus").submit(function(event) {
+
+        event.preventDefault();
+
+        var data = {
+          business_name: $("#businessName").val(),
+        };
+        $.ajax({
+          url: "/api/business/",
+          method: "POST",
+          data: data
+        }).done(function(response){
+            //console.log(response);
+            $("#businessName").val("");
+            refreshBusinessList();
+        });
+
+    });
 // creates the table
     // $.get("/api/appoiment/user/:id", function (data) {
 
