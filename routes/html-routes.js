@@ -52,12 +52,7 @@ router.get("/client/:clientID", function (req, res) {
     //{keyPublishable: keyPublishable}
     db.Business.findAll().then( (businesses) => {
 
-      //for(let i=0; i<businesses.length; i++){
-          //businesses[i].id
-      //}
-      var appointments = ["9:00", "10:00"];
-      res.render("clientview", {businesses: businesses,
-                                appointments: appointments});
+      res.render("clientview", {businesses: businesses});
     });
 
 });
