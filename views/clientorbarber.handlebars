@@ -1,12 +1,23 @@
 <body>
+<div class="container">
+  <div class="row">
+  	<div class="col">
+		<div class="jumbotron">
+		  <h1 class="display-3">Are you a client or barber?</h1>
+		  <p class="lead">Let us know if you are a customer or a barber shop owner or employee. We will take you to your profile page next. We will only ask this the first time you login.</p>
+		  <hr class="my-4">
 
-  <h1>Are you a client or barber?</h1>
-  <form action="/clientorbarber" method="post" autocomplete="on">
-    <input type="radio" name="user_type" value="client"> Customer <br>
-    <input type="radio" name="user_type" value="barber"> Barber <br><br>
-    <input type="text" name="id" value="{{userId}}" hidden>
-    <input type="text" name="idField" value="{{idField}}" hidden>
-    <input type="submit" value="Continue">
-  </form>
-    
+	      <form action="/clientorbarber" method="post" autocomplete="off">
+	        <i class="fa fa-address-book-o" aria-hidden="true"></i>
+	        <input type="radio" name="user_type" value="client" required> Client <br>
+	        <i class="fa fa-scissors" aria-hidden="true"></i>
+	        <input type="radio" name="user_type" value="barber" required> Barber <br><br>
+	        <input type="text" name="id" value="{{userId}}" hidden>
+	        <input type="text" name="idField" value="{{idField}}" hidden>
+	        <input class="btn btn-outline-primary" type="submit" value="Continue">
+	      </form>
+	    </div>
+    </div>
+  </div>
+</div>
 </body>
