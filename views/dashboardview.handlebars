@@ -655,46 +655,57 @@
           </div>
           <h1 class="text-center">Profile:</h1>
           <div class="container">
-            <div class="row">
-              <div class="col-lg-6 mx-auto">
-                <div class="modal-body profile-modal">
+            
+            <div class="modal-body profile-modal">
+
+              <div class="row">
+                <div class="col-lg-12 mx-auto">
                   <p>Please select your business affiliation:</p>
                   <form action="/api/employee" id="addEm" method="post">
-                    <div class="form-group">
-                      <select id="business" name="BusinessId">
-                      <!-- append options -->
-                      </select>
-                    </div>
-                    <input type="text" id="userId" name="UserId" hidden>
-                    <input type="submit" value="Set Business">
+                  <div class="form-group">
+                    <select id="business" name="BusinessId" required>
+                    <!-- append options -->
+                    </select>
+                  </div>
+                  <input type="text" id="userId" name="UserId" hidden>
+                  <input type="submit" value="Set Business">
                   </form>
                   <br>
                   <p>Don't see your business? <br> Add yours here:</p>
                   <form action="/api/business" id="addBus" method="post">
-                    <div class="form-group">
-                      <input type="text" id="businessName" name="business_name">
-                    </div>
-                    <div class="form-group">
-                      <input type="submit" value="Create Business">
-                    </div>
+                  <div class="form-group">
+                    <input type="text" id="businessName" name="business_name" placeholder="Business Name" required>
+                  </div>
+                  <div class="form-group">
+                    <textarea placeholder="Business Description..." name="description" id="businessDescription" rows="2" cols="25" required></textarea>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" id="photoUrl" name="photo" placeholder="Photo Link">
+                  </div>
+                  <div class="form-group">
+                    <input type="submit" value="Create Business">
+                  </div>
                   </form>                
                 </div>
               </div>
-              <div class="col-lg-6 mx-auto">
-                <div class="card border-primary mb-3">
+
+              <div class="row">
+                <div class="col-lg-12 mx-auto">
+                  <div class="card border-primary mb-3">
                   <div class="card-header text-primary">
                     Your Business:
                   </div>
-                  <ul id="affiliations" class="list-group list-group-flush">
-                  </ul>
+                  <dl id="affiliations" class="list-group list-group-flush">
+                  </dl>
+                  </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </div> <!-- modal-body -->
+          </div> <!-- container -->
         </div>
       </div>
-    </div>
-
+     </div>
     <!-- Page level plugin JavaScript-->
     <script src="vendor/chart.js/Chart.min.js"></script>
     <script src="vendor/datatables/jquery.dataTables.js"></script>
