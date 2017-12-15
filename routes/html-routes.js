@@ -50,10 +50,14 @@ router.get("/dashboard/:barberID", function (req, res) {
 router.get("/client/:clientID", function (req, res) {
 
     //{keyPublishable: keyPublishable}
-    db.Employee.findAll({}
-    ).then( (Employee) => {
-      console.log(Employee);
-      res.render("clientview", {barbers: Employee});
+    db.Business.findAll().then( (businesses) => {
+
+      //for(let i=0; i<businesses.length; i++){
+          //businesses[i].id
+      //}
+      var appointments = ["9:00", "10:00"];
+      res.render("clientview", {businesses: businesses,
+                                appointments: appointments});
     });
 
 });

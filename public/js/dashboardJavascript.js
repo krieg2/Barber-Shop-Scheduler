@@ -28,15 +28,32 @@ $(document).ready(function () {
             //console.log(response);
             $("#affiliations").empty();
             for(var i=0; i < response.length; i++){
-                var item = $("<li>");
-                item.addClass("list-group-item");
-                item.text(response[i].Business.business_name);
+
+                // List item with business name and description.
+                var busName = $("<dt>");
+                busName.addClass("list-group-item business-name");
+                var description = $("<dd>");
+                description.addClass("list-group-item");
+                var span = $("<span>");
+                span.addClass("business-description");
+                // Photo link.
+                var img = $("<img>");
+                img.attr("src", response[i].Business.photo);
+                img.addClass("business-photo");
+                // Populate text data from the server response.
+                busName.text(response[i].Business.business_name);
+                span.text(decodeURIComponent(response[i].Business.description));
+                // Remove item X icon.
                 var x = $("<i>");
                 x.data("id", response[i].id);
                 x.addClass("fa fa-window-close-o");
                 x.css("aria-hidden", "true");
-                item.append(x);
-                $("#affiliations").append(item);
+
+                description.append(img);
+                description.append(span);
+                busName.append(x);
+                $("#affiliations").append(busName);
+                $("#affiliations").append(description);
             }
 
         });
@@ -95,6 +112,8 @@ $(document).ready(function () {
 
         var data = {
           business_name: $("#businessName").val(),
+          description: $("#businessDescription").val(),
+          photo: $("#photoUrl").val(),
         };
         $.ajax({
           url: "/api/business/",
@@ -103,6 +122,8 @@ $(document).ready(function () {
         }).done(function(response){
             //console.log(response);
             $("#businessName").val("");
+            $("#businessDescription").val("");
+            $("#photoUrl").val("");
             refreshBusinessList();
         });
 
