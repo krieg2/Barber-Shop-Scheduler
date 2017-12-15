@@ -22,10 +22,21 @@
     background-color: #F5F5F5;
 }
 
+.profile-modal {
+    margin-bottom: 25px;
+}
+
 .modal-body {
 	padding: 2px;
 	background-color: #fff;
 	clear: left;
+}
+
+.logout-modal {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 15px;
+    color: #FF8C00;
 }
 
 .separatOR {

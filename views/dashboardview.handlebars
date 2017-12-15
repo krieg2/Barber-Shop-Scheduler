@@ -223,7 +223,7 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-comments"></i>
               </div>
-              <div class="mr-5">26 New Messages!</div>
+              <div class="mr-5">18 New Messages!</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
               <span class="float-left">View Details</span>
@@ -239,9 +239,9 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-list"></i>
               </div>
-              <div class="mr-5">11 New Tasks!</div>
+              <div class="mr-5">Profile</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" data-toggle="modal" href="#profileModal">
               <span class="float-left">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -255,7 +255,7 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-shopping-cart"></i>
               </div>
-              <div class="mr-5">123 New Orders!</div>
+              <div class="mr-5">10 New Orders!</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
               <span class="float-left">View Details</span>
@@ -269,9 +269,9 @@
           <div class="card text-white bg-danger o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
-                <i class="fa fa-fw fa-support"></i>
+                <i class="fa fa-fw fa-calendar"></i>
               </div>
-              <div class="mr-5">13 New Tickets!</div>
+              <div class="mr-5">28 New Appointments!</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
               <span class="float-left">View Details</span>
@@ -636,10 +636,45 @@
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-body logout-modal">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
             <a class="btn btn-primary" href="/auth/logout">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Profile modal -->
+    <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <h1 class="text-center">Profile:</h1>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12 mx-auto">
+                <div class="modal-body profile-modal">
+                  <p>Please select your business affiliation:</p>
+                  <form action="/api/employee" id="addEm" method="post">
+                    <select id="business" name="BusinessId">
+                    <!-- append options -->
+                    </select>
+                    <input type="text" id="userId" name="UserId" hidden>
+                    <input type="submit" value="Set Business">
+                  </form>
+                  <br>
+                  <p>Don't see your business? Add yours here:</p>
+                  <form action="/api/business" id="addBus" method="post">
+                    <input type="text" id="businessName" name="business_name">
+                    <input type="submit" value="Create Business">
+                  </form>                
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
