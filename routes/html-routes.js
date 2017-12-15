@@ -49,7 +49,12 @@ router.get("/dashboard/:barberID", function (req, res) {
 // Request to API using clientID. User must be authenticated.
 router.get("/client/:clientID", function (req, res) {
 
-    res.render("clientview", {keyPublishable: keyPublishable});
+    //{keyPublishable: keyPublishable}
+    db.User.findAll( { where: { user_type: "barber" }}
+    ).then( (users) => {
+
+      res.render("clientview", {barbers: users});
+    });
 
 });
 
