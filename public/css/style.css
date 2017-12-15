@@ -32,6 +32,11 @@
 	clear: left;
 }
 
+.fa-window-close-o {
+    float: right;
+    cursor: pointer;
+}
+
 .logout-modal {
     font-size: 14px;
     font-weight: 600;

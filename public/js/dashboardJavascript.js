@@ -18,14 +18,53 @@ $(document).ready(function () {
         });
     }
 
+    function refreshAffiliations(userId){
+
+        $.ajax({
+          url: "/api/employee/business/user/"+userId,
+          method: "GET"
+        }).done(function(response){
+
+            //console.log(response);
+            $("#affiliations").empty();
+            for(var i=0; i < response.length; i++){
+                var item = $("<li>");
+                item.addClass("list-group-item");
+                item.text(response[i].Business.business_name);
+                var x = $("<i>");
+                x.data("id", response[i].id);
+                x.addClass("fa fa-window-close-o");
+                x.css("aria-hidden", "true");
+                item.append(x);
+                $("#affiliations").append(item);
+            }
+
+        });
+    }
+
+    $("#affiliations").on("click", "i", function(event){
+
+        var rowId = $(this).data("id");
+
+        $.ajax({
+          url: "/api/employee/"+rowId,
+          type: "DELETE"
+        }).done(function(response){
+            //console.log(response);
+            refreshAffiliations($("#userId").val());
+        });
+    });
+
     $("a[href='#profileModal']").on("click", function(event) {
 
         $.ajax({
           url: "/auth/user/",
           method: "GET"
         }).done(function(response){
-            //console.log(response);
+
             $("#userId").val(response.id);
+
+            refreshAffiliations(response.id);
         });
 
         refreshBusinessList();
@@ -44,7 +83,8 @@ $(document).ready(function () {
           method: "POST",
           data: data
         }).done(function(response){
-            console.log(response);
+            //console.log(response);
+            refreshAffiliations($("#userId").val());
         });
 
     });
