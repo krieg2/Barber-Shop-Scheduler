@@ -40,14 +40,14 @@ router.get("/", function (req, res) {
 });
 
 // Request to API using barberID. User must be authenticated.
-router.get("/dashboard/:barberID", function (req, res) {
+router.get("/dashboard/:barberID", isLoggedIn, function (req, res) {
 
     res.render("dashboardview", hbsObject);
 
 });
 
 // Request to API using clientID. User must be authenticated.
-router.get("/client/:clientID", function (req, res) {
+router.get("/client/:clientID", isLoggedIn, function (req, res) {
 
     db.Business.findAll().then( (businesses) => {
 
@@ -61,7 +61,7 @@ router.get("/client/:clientID", function (req, res) {
 });
 
 // Determine if user is a client or barber.
-router.get("/clientorbarber/:provider", function (req, res) {
+router.get("/clientorbarber/:provider", isLoggedIn, function (req, res) {
 
     var idField = req.params.provider + "_id";
     var userId = req.user[idField];
@@ -79,7 +79,7 @@ router.get("/clientorbarber/:provider", function (req, res) {
     });
     
 });
-router.post("/clientorbarber", function (req, res) {
+router.post("/clientorbarber", isLoggedIn, function (req, res) {
 
     var userType = req.body.user_type;
 
@@ -100,7 +100,7 @@ router.post("/clientorbarber", function (req, res) {
 });
 
 // Stripe payments route.
-router.post("/charge", function (req, res) {
+router.post("/charge", isLoggedIn, function (req, res) {
   let amount = 2500;
 
   stripe.customers.create({
