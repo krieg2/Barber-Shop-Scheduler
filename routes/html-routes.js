@@ -49,9 +49,12 @@ router.get("/dashboard/:barberID", function (req, res) {
 // Request to API using clientID. User must be authenticated.
 router.get("/client/:clientID", function (req, res) {
 
-    //{keyPublishable: keyPublishable}
     db.Business.findAll().then( (businesses) => {
 
+      businesses = businesses.map( (element) => {
+           element.key = keyPublishable;
+           return element;
+      });
       res.render("clientview", {businesses: businesses});
     });
 
@@ -98,7 +101,7 @@ router.post("/clientorbarber", function (req, res) {
 
 // Stripe payments route.
 router.post("/charge", function (req, res) {
-  let amount = 500;
+  let amount = 2500;
 
   stripe.customers.create({
     email: req.body.stripeEmail,

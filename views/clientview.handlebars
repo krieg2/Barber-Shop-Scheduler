@@ -40,26 +40,13 @@
     <div class="container">
 
       <!-- Page Heading -->
-      <h1 class="my-4">Page Heading
-        <small>Secondary Text</small>
+      <h1 class="my-4">Barber Shops
+        <small>Try one of these shops:</small>
       </h1>
 
-      <!-- Testing Stripe! -->
-      <!-- <form action="/charge" method="POST">
-      <script
-        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-        data-key={{!keyPublishable}}
-        data-amount="500"
-        data-name="Demo"
-        data-description="Donate to the Developers Fund"
-        data-zip-code="true"
-        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-        data-locale="auto">
-      </script>
-      </form> -->
-      <!-- Project One -->
+      <!-- All Barber Shops -->
         {{#each businesses}}
-          {{> barbers }}
+          {{> barbers}}
         {{/each}}
       <!-- /.row -->
 
