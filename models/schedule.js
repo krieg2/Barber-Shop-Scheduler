@@ -9,46 +9,46 @@ module.exports = (sequelize,DataTypes) => {
       allowNull: false
     },
     sunday_in: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING
     },
     sunday_out: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING
     },
     monday_in: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING
     },
     monday_out: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING
     },
     tuesday_in: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING
     },
     tuesday_out: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING
     },
     wednesday_in: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING
     },
     wednesday_out: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING
     },
     thursday_in: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING
     },
     thursday_out: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING
     },
     friday_in: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING
     },
     friday_out: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING
     },
     saturday_in: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING
     },
     saturday_out: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING
     },
 
   });

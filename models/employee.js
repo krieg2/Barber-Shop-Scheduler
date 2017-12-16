@@ -18,6 +18,9 @@ module.exports = (sequelize,DataTypes) => {
   //Associate with
   Employee.associate = models => {
 
+    Employee.hasOne(models.Schedule, {
+      onDelete: 'cascade'
+    });
     Employee.hasMany(models.Service, {
       onDelete: 'cascade'
     });
