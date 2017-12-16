@@ -7,6 +7,8 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const LocalStrategy = require("passport-local").Strategy;
 const db = require("../models");
 const bcrypt = require("bcryptjs");
+const port = process.env.PORT || 3000 ;
+const host = process.env.HOST;
 
 // Configure Passport...
 
@@ -34,7 +36,7 @@ module.exports = function(app){
     passport.use(new GoogleStrategy({
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: "http://localhost:3000/auth/google/callback"
+        callbackURL: host+":"+port+"/auth/google/callback"
     }, (accessToken, refreshToken, profile, done) => {
 
         //console.log(profile);
@@ -87,7 +89,7 @@ module.exports = function(app){
     passport.use(new GithubStrategy({
         clientID: process.env.GITHUB_CLIENT_ID,
         clientSecret: process.env.GITHUB_CLIENT_SECRET,
-        callbackURL: "http://localhost:3000/auth/github/callback"
+        callbackURL: host+":"+port+"/auth/github/callback"
     }, (accessToken, refreshToken, profile, done) => {
 
         //console.log(profile);
@@ -142,7 +144,7 @@ module.exports = function(app){
     passport.use(new FacebookStrategy({
         clientID: process.env.FACEBOOK_CLIENT_ID,
         clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-        callbackURL: "http://localhost:3000/auth/facebook/callback",
+        callbackURL: host+":"+port+"/auth/facebook/callback",
         passReqToCallback: true
     }, (req, accessToken, refreshToken, profile, done) => {
 

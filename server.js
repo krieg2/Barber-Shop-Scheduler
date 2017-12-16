@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const methodOverride = require("method-override");
 const path = require("path");
 const db = require("./models");
-const port = process.env.PORT || 3000  ;
+const port = process.env.PORT || 3000 ;
 const app = express();
 require("dotenv").config();
 
@@ -49,7 +49,7 @@ require("./routes/user-api-routes.js")(app);
 app.use(morgan('tiny'));
 
 // listens for requests
-db.sequelize.sync({ force: false }).then(function() {
+db.sequelize.sync({ force: true }).then(function() {
     // listens for requests
     app.listen(port, function() {
         console.log("Listening on PORT " + port);
