@@ -4,10 +4,12 @@ const morgan = require("morgan");
 const methodOverride = require("method-override");
 const path = require("path");
 const db = require("./models");
-const port = process.env.PORT || 3000  ;
+const port = process.env.PORT || 3000 ;
 const app = express();
 require("dotenv").config();
 
+
+app.use('/clientorbarber/', express.static(path.join(__dirname, 'public')));
 app.use('/dashboard/', express.static(path.join(__dirname, 'public')));
 app.use('/client/', express.static(path.join(__dirname, 'public')));
 app.use('/', express.static(path.join(__dirname, 'public')));
