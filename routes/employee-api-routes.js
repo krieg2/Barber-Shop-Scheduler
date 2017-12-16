@@ -21,6 +21,21 @@ module.exports = app => {
       res.json(dbEmployee);
     });
   });
+  //get Employee where User id
+  app.get("/api/user/employee", (req, res) => {
+
+    if(req.user){
+      db.Employee.findOne({
+        where: {
+          UserId: req.user.id
+        }
+      }).then( dbEmployee => {
+        res.json(dbEmployee);
+      });
+    } else{
+      res.json({});
+    }
+  });
   //get all Employee where BusinessId
   app.get("/api/employee/business/:id", (req, res) => {
     db.Employee.findAll({
