@@ -4,8 +4,23 @@
     font-size: 22px;
 }
 
-.business-description {
-    
+.times-list {
+    list-style-type: none;
+    padding: 0px;
+    -webkit-columns: 100px 2;
+    -moz-columns: 100px 2;
+    columns: 100px 2;
+    -webkit-column-gap: 0px;
+    -moz-column-gap: 0px;
+    column-gap: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px;
+    -webkit-padding-end: 0px;
+}
+
+.times-list-item {
+    margin-bottom: 10px;
 }
 
 .business-photo {
