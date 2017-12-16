@@ -39,7 +39,7 @@ require("./routes/appointment-api-routes.js")(app);
 require("./routes/business-api-routes.js")(app);
 require("./routes/employee-api-routes.js")(app);
 require("./routes/product-api-routes.js")(app);
-require("./routes/scheduled-api-routes.js")(app);
+require("./routes/schedule-api-routes.js")(app);
 require("./routes/service-api-routes.js")(app);
 require("./routes/user-api-routes.js")(app);
 
@@ -47,7 +47,11 @@ require("./routes/user-api-routes.js")(app);
 app.use(morgan('tiny'));
 
 // listens for requests
+<<<<<<< HEAD
 db.sequelize.sync({force:true}).then(function() {
+=======
+db.sequelize.sync({ force: true }).then(function() {
+>>>>>>> cce34ef2c2e15412956bff9e35d1da6ee809e1b2
     // listens for requests
     app.listen(port, function() {
         console.log("Listening on PORT " + port);

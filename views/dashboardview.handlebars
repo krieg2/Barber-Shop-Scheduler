@@ -282,6 +282,53 @@
           </div>
         </div>
       </div>
+
+      <!-- Weekly Schedule-->
+      <form action="/api/schedule/" id="schedule" method="post">
+      <table class="table table-primary table-bordered table-responsive">
+        <thead>
+          <tr>
+            <th scope="col">Schedule</th>
+            <th scope="col">Sunday</th>
+            <th scope="col">Monday</th>
+            <th scope="col">Tuesday</th>
+            <th scope="col">Wednesday</th>
+            <th scope="col">Thursday</th>
+            <th scope="col">Friday</th>
+            <th scope="col">Saturday</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Time in:</th>
+            <td><input type="time" name="sunday_in"></td>
+            <td><input type="time" name="monday_in"></td>
+            <td><input type="time" name="tuesday_in"></td>
+            <td><input type="time" name="wednesday_in"></td>
+            <td><input type="time" name="thursday_in"></td>
+            <td><input type="time" name="friday_in"></td>
+            <td><input type="time" name="saturday_in"></td>
+          </tr>
+          <tr>
+            <th scope="row">Time out:</th>
+            <td><input type="time" name="sunday_out"></td>
+            <td><input type="time" name="monday_out"></td>
+            <td><input type="time" name="tuesday_out"></td>
+            <td><input type="time" name="wednesday_out"></td>
+            <td><input type="time" name="thursday_out"></td>
+            <td><input type="time" name="friday_out"></td>
+            <td><input type="time" name="saturday_out"></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row">
+        <div class="col-12 mx-auto">
+          <input type="submit" id="setSchedule" value="Set Schedule">
+        </div>
+      </div>
+     </form>
+     <br>
+
       <!-- Area Chart Example-->
       <div class="card mb-3">
         <div class="card-header">
