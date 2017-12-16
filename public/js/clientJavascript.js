@@ -30,14 +30,15 @@ $(document).ready( function(){
 
                         var div = $("<div>"); 
                         var ul = $("<ul>");
-                        ul.css({"list-style-type": "none", padding: "0px"});
+                        ul.addClass("times-list");
+                        //ul.css({"list-style-type": "none", padding: "0px"});
                         
                         div.text(first+" "+last);
-                        div.addClass("col");
+                        div.addClass("col-6");
 
                         while( endF.diff(nextTime, "seconds") >= 0 ){
                             var li = $("<li>");
-                            li.css("margin", "10px");
+                            li.addClass("times-list-item");
                             li.html("<button type='button' class='btn btn-info'><span class='badge badge-light'>" +
                                     nextTime.format("hh:mm A") + "</span></button>");
                             ul.append(li);
