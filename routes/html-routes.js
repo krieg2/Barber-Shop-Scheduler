@@ -50,10 +50,9 @@ router.get("/dashboard/:barberID", function (req, res) {
 router.get("/client/:clientID", function (req, res) {
 
     //{keyPublishable: keyPublishable}
-    db.User.findAll( { where: { user_type: "barber" }}
-    ).then( (users) => {
+    db.Business.findAll().then( (businesses) => {
 
-      res.render("clientview", {barbers: users});
+      res.render("clientview", {businesses: businesses});
     });
 
 });

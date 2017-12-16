@@ -29,6 +29,11 @@ module.exports = (sequelize,DataTypes) => {
         allowNull: false
       }
     });
+    Employee.belongsTo(models.Business, {
+      BusinessId:{
+        allowNull: false
+      }
+    });
   };
   return Employee;
 };

@@ -32,6 +32,17 @@ module.exports = app => {
       res.json(dbEmployee);
     });
   });
+  //get all Business where UserId
+  app.get("/api/employee/business/user/:id", (req, res) => {
+    db.Employee.findAll({
+      where: {
+        UserId: req.params.id
+      },
+        include: [{ all: true, nested: true }]
+      }).then( (dbEmployee) => {
+      res.json(dbEmployee);
+    });
+  });
   //Create new Employee
   app.post("/api/employee", (req, res) => {
     db.Employee.create(req.body).then( dbEmployee => {

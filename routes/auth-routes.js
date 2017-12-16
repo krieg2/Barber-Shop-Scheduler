@@ -104,6 +104,14 @@ module.exports = function(passport){
       res.end("Login Failed");
     });
 
+    router.get("/user", function(req, res){
+      let userId = "";
+      if(req.user){
+        userId = req.user.id;
+      }
+      res.json({id: userId});
+    });
+
     router.get("/logout", function(req, res){
       if(req.user){
         req.logout();
