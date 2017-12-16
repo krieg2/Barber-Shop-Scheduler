@@ -30,7 +30,7 @@ $(document).ready( function(){
 
                         var div = $("<div>"); 
                         var ul = $("<ul>");
-                        ul.css("list-style-type", "none");
+                        ul.css({"list-style-type": "none", padding: "0px"});
                         
                         div.text(first+" "+last);
                         div.addClass("col");
