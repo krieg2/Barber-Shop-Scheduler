@@ -41,7 +41,7 @@ require("./routes/appointment-api-routes.js")(app);
 require("./routes/business-api-routes.js")(app);
 require("./routes/employee-api-routes.js")(app);
 require("./routes/product-api-routes.js")(app);
-require("./routes/scheduled-api-routes.js")(app);
+require("./routes/schedule-api-routes.js")(app);
 require("./routes/service-api-routes.js")(app);
 require("./routes/user-api-routes.js")(app);
 

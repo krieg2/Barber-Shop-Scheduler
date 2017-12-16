@@ -128,6 +128,29 @@ $(document).ready(function () {
         });
 
     });
+
+    $("#schedule").submit(function(event) {
+
+        event.preventDefault();
+
+        $.ajax({
+          url: "/api/user/employee",
+          method: "GET"
+        }).done(function(response1){
+            var id = response1.id;
+            var schedule = $("#schedule").serializeArray();
+            schedule.push({name: "EmployeeId", value: id});
+            $.ajax({
+              url: "/api/schedule",
+              method: "POST",
+              data: schedule
+            }).done(function(response2){
+                //console.log(response2);
+            });
+            
+        });
+
+    });
 // creates the table
     // $.get("/api/appoiment/user/:id", function (data) {
 
