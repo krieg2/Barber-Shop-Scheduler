@@ -139,9 +139,7 @@ $(document).ready(function () {
         }).done(function(response1){
             var id = response1.id;
             var schedule = $("#schedule").serializeArray();
-            //console.log("1:"+schedule);   {"name":"wednesday_out","value":""}
             schedule.push({name: "EmployeeId", value: id});
-            //console.log(JSON.stringify(schedule));
             $.ajax({
               url: "/api/schedule",
               method: "POST",
