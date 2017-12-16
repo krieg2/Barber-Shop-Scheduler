@@ -9,6 +9,21 @@
     <p>{{description}}</p>
 
     <a class="btn btn-primary" data-toggle="modal" data-id={{id}} href="#bookingModal">Book Appointment</a>
+    <br>
+    <br>
+    <!-- Testing Stripe! -->
+    <form action="/charge" method="POST">
+    <script
+      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key={{key}}
+      data-amount="2500"
+      data-name="Make a purchase"
+      data-description="2 haircuts"
+      data-zip-code="true"
+      data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+      data-locale="auto">
+    </script>
+    </form>
   </div>
 </div>
 <hr>
