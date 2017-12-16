@@ -47,11 +47,7 @@ require("./routes/user-api-routes.js")(app);
 app.use(morgan('tiny'));
 
 // listens for requests
-<<<<<<< HEAD
-db.sequelize.sync({force:true}).then(function() {
-=======
-db.sequelize.sync({ force: true }).then(function() {
->>>>>>> cce34ef2c2e15412956bff9e35d1da6ee809e1b2
+db.sequelize.sync({ force: false }).then(function() {
     // listens for requests
     app.listen(port, function() {
         console.log("Listening on PORT " + port);
