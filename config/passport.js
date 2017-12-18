@@ -7,7 +7,8 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const LocalStrategy = require("passport-local").Strategy;
 const db = require("../models");
 const bcrypt = require("bcryptjs");
-const port = process.env.NODE_PORT || '' ; //only use port in DEV
+const port = process.env.NODE_PORT || 3000 ; //only use port in DEV
+console.log(process.env.HOST)
 const host = process.env.HOST;
 
 // Configure Passport...
