@@ -1,9 +1,11 @@
-var db = require("../models");
+const db = require("../models");
+const htmlRoutes = require("./html-routes.js");
+const isLoggedIn = htmlRoutes.isLoggedIn;
 
 module.exports = app => {
 
   //Get Appoiment where id
-  app.get("/api/appointment/:id", (req, res) => {
+  app.get("/api/appointment/:id", isLoggedIn, (req, res) => {
     db.Appointment.findOne({
       where: {
         id: req.params.id
@@ -18,7 +20,7 @@ module.exports = app => {
   });
   //Get Appoiment where UserId
 
-  app.get("/api/appointment/user/:id", (req, res) => {
+  app.get("/api/appointment/user/:id", isLoggedIn, (req, res) => {
     
     db.Appointment.findAll({
       where: {
@@ -32,7 +34,7 @@ module.exports = app => {
     });
   });
   //Get Appoiment where EmployeeID
-  app.get("/api/appointment/employee/:id", (req, res) => {
+  app.get("/api/appointment/employee/:id", isLoggedIn, (req, res) => {
     db.Appointment.findAll({
       where: {
         EmployeeID: req.params.id
@@ -45,13 +47,13 @@ module.exports = app => {
     });
   });
   //Create Appoiment where id
-  app.post("/api/appointment", (req, res) => {
+  app.post("/api/appointment", isLoggedIn, (req, res) => {
     db.Appointment.create(req.body).then( dbAppointment => {
       res.json(dbAppointment);
     });
   });
   //Delete Appoiment where id
-  app.delete("/api/appointment/:id", (req, res) => {
+  app.delete("/api/appointment/:id", isLoggedIn, (req, res) => {
     db.Appointment.destroy({
       where: {
         id: req.params.id
@@ -61,7 +63,7 @@ module.exports = app => {
     });
   });
   //Update Appoiment where id
-  app.put("/api/appointment", (req, res) => {
+  app.put("/api/appointment", isLoggedIn, (req, res) => {
     db.Appointment.update(
       req.body,
       {

@@ -1,9 +1,11 @@
-var db = require("../models");
+const db = require("../models");
+const htmlRoutes = require("./html-routes.js");
+const isLoggedIn = htmlRoutes.isLoggedIn;
 
 module.exports = app => {
 
   //Get product where id
-  app.get("/api/product/:id", (req, res) => {
+  app.get("/api/product/:id", isLoggedIn, (req, res) => {
     db.Product.findOne({
       where: {
         id: req.params.id
@@ -14,7 +16,7 @@ module.exports = app => {
     });
   });
   //Get product where BusinessId
-  app.get("/api/product/business/:id", (req, res) => {
+  app.get("/api/product/business/:id", isLoggedIn, (req, res) => {
     db.Product.findAll({
       where: {
         BusinessId: req.params.id
@@ -25,13 +27,13 @@ module.exports = app => {
     });
   });
   //Create new product
-  app.post("/api/product", (req, res) => {
+  app.post("/api/product", isLoggedIn, (req, res) => {
     db.Product.create(req.body).then( dbProduct => {
       res.json(dbProduct);
     });
   });
   //Delete where id
-  app.delete("/api/product/:id", (req, res) => {
+  app.delete("/api/product/:id", isLoggedIn, (req, res) => {
     db.Product.destroy({
       where: {
         id: req.params.id
@@ -41,7 +43,7 @@ module.exports = app => {
     });
   });
   //Update Product where id
-  app.put("/api/scheduled", (req, res) => {
+  app.put("/api/scheduled", isLoggedIn, (req, res) => {
     db.Product.update(
       req.body,
       {

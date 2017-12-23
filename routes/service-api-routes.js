@@ -1,15 +1,17 @@
-var db = require("../models");
+const db = require("../models");
+const htmlRoutes = require("./html-routes.js");
+const isLoggedIn = htmlRoutes.isLoggedIn;
 
 module.exports = app => {
   //Get all service
-  app.get("/api/service", (req, res) => {
+  app.get("/api/service", isLoggedIn, (req, res) => {
 
     db.Service.findAll({}).then( dbService => {
       res.json(dbService);
     });
   });
   //Get service where id
-  app.get("/api/service/:id", (req, res) => {
+  app.get("/api/service/:id", isLoggedIn, (req, res) => {
 
     db.Service.findOne({
       where: {
@@ -21,7 +23,7 @@ module.exports = app => {
     });
   });
   //Get service where UserId
-  app.get("/api/service/:id", (req, res) => {
+  app.get("/api/service/:id", isLoggedIn, (req, res) => {
     db.Service.findAll({
       where: {
         UserId: req.params.id
@@ -33,13 +35,13 @@ module.exports = app => {
     });
   });
   //Create new service
-  app.post("/api/service", (req, res) => {
+  app.post("/api/service", isLoggedIn, (req, res) => {
     db.Service.create(req.body).then( dbService => {
       res.json(dbService);
     });
   });
   //Delete Service where id
-  app.delete("/api/service/:id", (req, res) => {
+  app.delete("/api/service/:id", isLoggedIn, (req, res) => {
     db.Service.destroy({
       where: {
         id: req.params.id
@@ -49,7 +51,7 @@ module.exports = app => {
     });
   });
   //Update service where id
-  app.put("/api/service", (req, res) => {
+  app.put("/api/service", isLoggedIn, (req, res) => {
     db.Service.update(
       req.body,
       {

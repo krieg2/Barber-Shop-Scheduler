@@ -1,14 +1,16 @@
-var db = require("../models");
+const db = require("../models");
+const htmlRoutes = require("./html-routes.js");
+const isLoggedIn = htmlRoutes.isLoggedIn;
 
 module.exports = app => {
   //Get all Business
-  app.get("/api/business", (req, res) => {
+  app.get("/api/business", isLoggedIn, (req, res) => {
     db.Business.findAll({}).then( dbBusiness => {
       res.json(dbBusiness);
     });
   });
   //Get Business where id
-  app.get("/api/business/:id", (req, res) => {
+  app.get("/api/business/:id", isLoggedIn, (req, res) => {
     db.Business.findOne({
       where: {
         id: req.params.id
@@ -19,13 +21,13 @@ module.exports = app => {
     });
   });
   //Create new Business
-  app.post("/api/business", (req, res) => {
+  app.post("/api/business", isLoggedIn, (req, res) => {
     db.Business.create(req.body).then( dbBusiness => {
       res.json(dbBusiness);
     });
   });
   //Delete Business where id
-  app.delete("/api/business/:id", (req, res) => {
+  app.delete("/api/business/:id", isLoggedIn, (req, res) => {
     db.Business.destroy({
       where: {
         id: req.params.id
@@ -35,7 +37,7 @@ module.exports = app => {
     });
   });
   //Update Business where id
-  app.put("/api/business", (req, res) => {
+  app.put("/api/business", isLoggedIn, (req, res) => {
     db.Business.update(
       req.body,
       {
