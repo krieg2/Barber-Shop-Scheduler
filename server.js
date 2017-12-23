@@ -30,10 +30,10 @@ app.set("view engine", "handlebars");
 var passport = require("./config/passport.js")(app);
 
 // Import routes
-var routes = require("./routes/html-routes.js");
+var htmlRoutes = require("./routes/html-routes.js");
 var authRoutes = require("./routes/auth-routes.js")(passport);
 
-app.use("/", routes);
+app.use("/", htmlRoutes.router);
 app.use("/auth", authRoutes);
 
 require("./routes/address-api-routes.js")(app);
@@ -49,7 +49,7 @@ require("./routes/user-api-routes.js")(app);
 app.use(morgan('tiny'));
 
 // listens for requests
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({ force: false }).then(function() {
     // listens for requests
     app.listen(port, function() {
         console.log("Listening on PORT " + port);

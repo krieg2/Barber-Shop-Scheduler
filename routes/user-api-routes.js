@@ -1,15 +1,17 @@
-var db = require("../models");
+const db = require("../models");
+const htmlRoutes = require("./html-routes.js");
+const isLoggedIn = htmlRoutes.isLoggedIn;
 
 module.exports = app => {
   //Get all User
-  app.get("/api/user", (req, res) => {
+  app.get("/api/user", isLoggedIn, (req, res) => {
 
     db.User.findAll({}).then( dbUser => {
       res.json(dbUser);
     });
   });
   //Get User id
-  app.get("/api/User/:id", (req, res) => {
+  app.get("/api/user/:id", isLoggedIn, (req, res) => {
     db.User.findOne({
       where: {
         id: req.params.id
@@ -20,7 +22,7 @@ module.exports = app => {
     });
   });
   //Get User BusinessId
-  app.get("/api/user/business/:BusinessId", (req, res) => {
+  app.get("/api/user/business/:BusinessId", isLoggedIn, (req, res) => {
 
     db.User.findOne({
       where: {
@@ -32,13 +34,13 @@ module.exports = app => {
     });
   });
   //Create new User
-  app.post("/api/user", (req, res) => {
+  app.post("/api/user", isLoggedIn, (req, res) => {
     db.User.create(req.body).then( dbUser => {
       res.json(dbUser);
     });
   });
   //Delete User where id
-  app.delete("/api/user/:id", (req, res) => {
+  app.delete("/api/user/:id", isLoggedIn, (req, res) => {
     db.User.destroy({
       where: {
         id: req.params.id
@@ -48,7 +50,7 @@ module.exports = app => {
     });
   });
   //Update User where id
-  app.put("/api/user", (req, res) => {
+  app.put("/api/user", isLoggedIn, (req, res) => {
     db.User.update(
       req.body,
       {

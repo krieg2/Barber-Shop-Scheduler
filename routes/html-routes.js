@@ -117,4 +117,5 @@ router.post("/charge", isLoggedIn, function (req, res) {
   .then(charge => res.render("charge"));
 });
 
-module.exports = router;
+module.exports.router = router;
+module.exports.isLoggedIn = isLoggedIn;

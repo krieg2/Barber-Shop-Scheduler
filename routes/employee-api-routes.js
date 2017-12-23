@@ -1,8 +1,10 @@
-var db = require("../models");
+const db = require("../models");
+const htmlRoutes = require("./html-routes.js");
+const isLoggedIn = htmlRoutes.isLoggedIn;
 
 module.exports = app => {
   //Get all Employee in db
-  app.get("/api/employee", (req, res) => {
+  app.get("/api/employee", isLoggedIn, (req, res) => {
 
     db.Employee.findAll({
       include: [{ all: true, nested: true }]
@@ -11,7 +13,7 @@ module.exports = app => {
     });
   });
   //get Employee where id
-  app.get("/api/employee/:id", (req, res) => {
+  app.get("/api/employee/:id", isLoggedIn, (req, res) => {
     db.Employee.findOne({
       where: {
         id: req.params.id
@@ -22,7 +24,7 @@ module.exports = app => {
     });
   });
   //get Employee where User id
-  app.get("/api/user/employee", (req, res) => {
+  app.get("/api/user/employee", isLoggedIn, (req, res) => {
 
     if(req.user){
       db.Employee.findOne({
@@ -37,7 +39,7 @@ module.exports = app => {
     }
   });
   //get all Employee where BusinessId
-  app.get("/api/employee/business/:id", (req, res) => {
+  app.get("/api/employee/business/:id", isLoggedIn, (req, res) => {
     db.Employee.findAll({
       where: {
         BusinessId: req.params.id
@@ -48,7 +50,7 @@ module.exports = app => {
     });
   });
   //get all Business where UserId
-  app.get("/api/employee/business/user/:id", (req, res) => {
+  app.get("/api/employee/business/user/:id", isLoggedIn, (req, res) => {
     db.Employee.findAll({
       where: {
         UserId: req.params.id
@@ -59,13 +61,13 @@ module.exports = app => {
     });
   });
   //Create new Employee
-  app.post("/api/employee", (req, res) => {
+  app.post("/api/employee", isLoggedIn, (req, res) => {
     db.Employee.create(req.body).then( dbEmployee => {
       res.json(dbEmployee);
     });
   });
   //Delete Employee
-  app.delete("/api/employee/:id", (req, res) => {
+  app.delete("/api/employee/:id", isLoggedIn, (req, res) => {
     db.Employee.destroy({
       where: {
         id: req.params.id
@@ -75,7 +77,7 @@ module.exports = app => {
     });
   });
   //Update Employee where id
-  app.put("/api/employee", (req, res) => {
+  app.put("/api/employee", isLoggedIn, (req, res) => {
     db.Employee.update(
       req.body,
       {
