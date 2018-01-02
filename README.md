@@ -8,4 +8,4 @@ User authentication is done with [Passport.js](http://www.passportjs.org) for bo
 
 Payments are processed by [Stripe.js](https://stripe.com). Customers are able to pay for appointments in advance.
 
-The application is a **Node.js Express** server hosted on **Heroku**. The database on the back end is MySQL used with the Sequelize ORM.
+The application is a **Node.js Express** server hosted on **Heroku**. The database on the back-end is MySQL used with the Sequelize ORM.
