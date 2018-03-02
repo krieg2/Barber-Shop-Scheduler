@@ -59,6 +59,7 @@
 }
 
 .modal-body {
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	padding: 2px;
 	background-color: #fff;
 	clear: left;
@@ -81,7 +82,7 @@
     font-weight: 400;
     text-align: center;
     color: #A9A9A9;
-    font-family: "Georgia", serif;
+    margin-bottom: 16px;
 }
 
 .login-area {
