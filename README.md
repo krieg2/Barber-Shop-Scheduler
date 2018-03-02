@@ -1,6 +1,6 @@
 # Barber Shop Scheduler
 
-[Link to app on Heroku.](https://mighty-crag-92193.herokuapp.com)
+[Link to app on Heroku.](https://barbershops.herokuapp.com/)
 
 This application connects barber shops and salons with customers. Businesses can sign up and monitor their appointments and renvenue through an easy to use web interface. Customers can sign up, find local barbers or salons, and book their appointments at the best time to avoid long waits. 
 
